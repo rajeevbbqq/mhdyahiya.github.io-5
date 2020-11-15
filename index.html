@@ -248,6 +248,7 @@
     }
   </style>
   <script src="./assets/javascript/vue-2.6.12.js"></script>
+  <script src="./assets/javascript/axios.min.js"></script>
 </head>
 
 <body
@@ -263,10 +264,10 @@
                 <i class="freshio-icon-bars"></i>
               </a>
               <div class="site-branding">
-                <a href="./index.html" class="custom-logo-link" rel="home"><img
+                <a href="./index.html" class="custom-logo-link" rel="home"><img src="./assets/images/foodmania_logo.png"
+                    data-src="./assets/images/foodmania_logo.png" class="lazyload logo-light" alt="Logo" /><img
                     src="./assets/images/foodmania_logo.png" data-src="./assets/images/foodmania_logo.png"
-                    class="lazyload logo-light" alt="Logo" /><img src="./assets/images/foodmania_logo.png"
-                    data-src="./assets/images/foodmania_logo.png" class="lazyload logo-dark" alt="Logo" /></a>
+                    class="lazyload logo-dark" alt="Logo" /></a>
               </div>
             </div>
             <div class="header-center d-flex align-items-center desktop-hide-down">
@@ -285,17 +286,16 @@
             </div>
             <div class="right desktop-hide-down">
               <div class="header-group-action">
-                  <div class="freshio-contact">
-                      <div class="contact_inner">
-                          <div class="contact_icon"> <i class="freshio-icon-headphones-alt"
-                                  aria-hidden="true"></i></div>
-                          <div class="contact_content"> <span class="sub-title">Call us 24/7</span> <span
-                                  class="title"><a href="tel:+917012006806">(+91) 7012006806</a></span>
-                          </div>
-                      </div>
+                <div class="freshio-contact">
+                  <div class="contact_inner">
+                    <div class="contact_icon"> <i class="freshio-icon-headphones-alt" aria-hidden="true"></i></div>
+                    <div class="contact_content"> <span class="sub-title">Call us 24/7</span> <span class="title"><a
+                          href="tel:+917012006806">(+91) 7012006806</a></span>
+                    </div>
                   </div>
+                </div>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </header>
@@ -320,25 +320,6 @@
                 </ul>
               </div>
             </nav>
-            <!-- <div class="header-group-action desktop-hide-down">
-              <div class="site-header-cart menu">
-                <a class="cart-contents" href="../cart/index.html" title="View your shopping cart">
-                  <span class="count">0</span>
-                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹
-                    </span>0.00</span>
-                </a>
-                <div class="widget woocommerce widget_shopping_cart">
-                  <div class="widget_shopping_cart_content"></div>
-                </div>
-              </div>
-            </div>
-            <div class="site-header-cart header-cart-mobile">
-              <a class="cart-contents" href="../cart/index.html" title="View your shopping cart">
-                <span class="count">0</span>
-                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹
-                  </span>0.00</span>
-              </a>
-            </div> -->
             <a href="#" class="menu-mobile-nav-button">
               <span class="toggle-text screen-reader-text">Menu</span>
               <i class="freshio-icon-bars"></i>
@@ -762,92 +743,36 @@
                                           data-tab="1" aria-labelledby="elementor-tab-title-2151">
                                           <div class="woocommerce columns-3 columns-tablet-3 columns-mobile-1">
                                             <ul class="products columns-3">
-                                              <li
-                                                class="product type-product post-285 status-publish first instock product_cat-allium product_cat-uncategorized product_tag-vegetables has-post-thumbnail sold-individually shipping-taxable purchasable product-type-variable">
-                                                <div class="product-block">
-                                                  <div class="product-transition">
-                                                    <div class="product-image">
-                                                      <img width="450" height="420"
-                                                        src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20450%20420%22%3E%3C/svg%3E"
-                                                        data-src="https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/40-450x420.jpg"
-                                                        class="lazyload attachment-shop_catalog size-shop_catalog"
-                                                        alt="" />
-                                                    </div>
-                                                    <a href="../product/ergonomic-iron-clock/index.html"
-                                                      class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
-                                                  </div>
-                                                  <h3 class="woocommerce-loop-product__title">
-                                                    <a href="../product/ergonomic-iron-clock/index.html">Ergonomic Iron
-                                                      Clock</a>
-                                                  </h3>
-                                                  <span class="price"><span
-                                                      class="woocommerce-Price-amount amount"><bdi><span
-                                                          class="woocommerce-Price-currencySymbol">₹
-                                                        </span>115.25</bdi></span>
-                                                    &ndash;
-                                                    <span class="woocommerce-Price-amount amount"><bdi><span
-                                                          class="woocommerce-Price-currencySymbol">₹
-                                                        </span>930.97</bdi></span></span>
-                                                  <a href="../product/ergonomic-iron-clock/index.html" data-quantity="1"
-                                                    class="button product_type_variable add_to_cart_button"
-                                                    data-product_id="285" data-product_sku="" rel="nofollow">Add to cart</a>
-                                                </div>
-                                              </li>
-                                              <li
+                                              <li v-for="product in products"
                                                 class="product type-product post-284 status-publish outofstock product_cat-allium product_cat-uncategorized product_tag-fruits has-post-thumbnail shipping-taxable purchasable product-type-simple">
                                                 <div class="product-block">
                                                   <div class="product-transition">
                                                     <div class="product-image">
-                                                      <img width="450" height="420"
-                                                        src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20450%20420%22%3E%3C/svg%3E"
-                                                        data-src="https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/39-450x420.jpg"
+                                                      <img width="450" height="420" :src="product.image"
+                                                        :data-src="product.image"
                                                         class="lazyload attachment-shop_catalog size-shop_catalog"
                                                         alt="" />
+                                                      <span class="onsale" v-if="product.is_shippable">Sale!</span>
                                                     </div>
-                                                    <span class="stock-label">Out Of Stock</span>
-                                                    <a href="../product/rustic-paper-pants/index.html"
+                                                    <span class="stock-label"
+                                                      v-if="product.available_quantity === 0">Out Of Stock</span>
+                                                    <a
                                                       class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
                                                   </div>
                                                   <h3 class="woocommerce-loop-product__title">
-                                                    <a href="../product/rustic-paper-pants/index.html">Rustic Paper
-                                                      Pants</a>
+                                                    <a>{{product.name}}</a>
                                                   </h3>
-                                                  <span class="price"><span
-                                                      class="woocommerce-Price-amount amount"><bdi><span
-                                                          class="woocommerce-Price-currencySymbol">₹
-                                                        </span>938.04</bdi></span></span>
-                                                  <a href="../product/rustic-paper-pants/index.html" data-quantity="1"
+                                                  <span class="price"><del v-if="product.mrp !== '0'"><span
+                                                        class="woocommerce-Price-amount amount"><bdi><span
+                                                            class="woocommerce-Price-currencySymbol">₹
+                                                          </span>{{product.mrp}}</bdi></span></del>
+                                                    <ins><span class="woocommerce-Price-amount amount"><bdi><span
+                                                            class="woocommerce-Price-currencySymbol">₹
+                                                          </span>{{product.sellablePrice}}</bdi></span></ins></span>
+                                                  <a v-if="product.is_shippable" data-quantity="1" @click="addToCart(product)"
                                                     class="button product_type_simple" data-product_id="284"
                                                     data-product_sku="rustic-paper-pants-99936556" rel="nofollow">Add to cart</a>
-                                                </div>
-                                              </li>
-                                              <li
-                                                class="product type-product post-283 status-publish instock product_cat-allium product_cat-uncategorized product_tag-juices has-post-thumbnail virtual purchasable product-type-simple">
-                                                <div class="product-block">
-                                                  <div class="product-transition">
-                                                    <div class="product-image">
-                                                      <img width="450" height="420"
-                                                        src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20450%20420%22%3E%3C/svg%3E"
-                                                        data-src="https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/38-450x420.jpg"
-                                                        class="lazyload attachment-shop_catalog size-shop_catalog"
-                                                        alt="" />
-                                                    </div>
-                                                    <a href="../product/awesome-leather-shirt/index.html"
-                                                      class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
-                                                  </div>
-                                                  <h3 class="woocommerce-loop-product__title">
-                                                    <a href="../product/awesome-leather-shirt/index.html">Awesome
-                                                      Leather
-                                                      Shirt</a>
-                                                  </h3>
-                                                  <span class="price"><span
-                                                      class="woocommerce-Price-amount amount"><bdi><span
-                                                          class="woocommerce-Price-currencySymbol">₹
-                                                        </span>972.50</bdi></span></span>
-                                                  <a href="index646c.html?add-to-cart=283" data-quantity="1"
-                                                    class="button product_type_simple add_to_cart_button ajax_add_to_cart"
-                                                    data-product_id="283"
-                                                    data-product_sku="awesome-leather-shirt-27924204" rel="nofollow">Add to cart</a>
+                                                  <a v-if="!product.is_shippable">Not available</a>
                                                 </div>
                                               </li>
                                             </ul>
@@ -1652,7 +1577,25 @@
     var app = new Vue({
       el: '#app',
       data: {
-        message: 'Hello Vue!'
+        products: [
+          {
+            "id": "1",
+            "image": "https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/40-450x420.jpg",
+            "name": "Ergonomic Iron Clock",
+            "mrp": "0",
+            "sellablePrice": "99.25",
+            "available_quantity": "10",
+            "is_shippable": true
+          }
+        ]
+      },
+
+      methods: {
+        async addToCart(product) {
+          product.productCount = 1;
+          await localStorage.setItem('cartObject', JSON.stringify([product]));
+          window.location.href = './cart.html';
+        }
       }
     })
   </script>

@@ -1,0 +1,31 @@
+{
+    "products": [
+        {
+          "id": "1",
+          "image": "https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/40-450x420.jpg",
+          "name": "Ergonomic Iron Clock",
+          "mrp": "0",
+          "sellablePrice": "99.25",
+          "available_quantity": "10",
+          "is_shippable": true
+        },
+        {
+          "id": "2",
+          "image": "https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/39-450x420.jpg",
+          "name": "Rustic Paper Pants",
+          "mrp": "115.25",
+          "sellablePrice": "110.25",
+          "available_quantity": "0",
+          "is_shippable": true
+        },
+        {
+          "id": "3",
+          "image": "https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/38-450x420.jpg",
+          "name": "Awesome Leather Shirt",
+          "mrp": "0",
+          "sellablePrice": "200.25",
+          "available_quantity": "10",
+          "is_shippable": false
+        }
+      ]
+}

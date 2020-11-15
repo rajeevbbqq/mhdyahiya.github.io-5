@@ -290,6 +290,7 @@
 		}
 	</style>
 	<script src="./assets/javascript/vue-2.6.12.js"></script>
+	<script src="./assets/javascript/axios.min.js"></script>
 </head>
 
 <body
@@ -315,19 +316,19 @@
 									class="toggle-text screen-reader-text">Menu</span> <i class="freshio-icon-bars"></i>
 							</a>
 						</div>
-                        <div class="right desktop-hide-down">
-                            <div class="header-group-action">
-                                <div class="freshio-contact">
-                                    <div class="contact_inner">
-                                        <div class="contact_icon"> <i class="freshio-icon-headphones-alt"
-                                                aria-hidden="true"></i></div>
-                                        <div class="contact_content"> <span class="sub-title">Call us 24/7</span> <span
-                                                class="title"><a href="tel:+917012006806">(+91) 7012006806</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+						<div class="right desktop-hide-down">
+							<div class="header-group-action">
+								<div class="freshio-contact">
+									<div class="contact_inner">
+										<div class="contact_icon"> <i class="freshio-icon-headphones-alt"
+												aria-hidden="true"></i></div>
+										<div class="contact_content"> <span class="sub-title">Call us 24/7</span> <span
+												class="title"><a href="tel:+917012006806">(+91) 7012006806</a></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="header-bottom desktop-hide-down header-navigation-background">
@@ -383,13 +384,31 @@
 							class="breadcrumb-separator"> / </span>Cart</nav>
 				</div>
 			</div>
-
-
-
-			<div id="content" class="site-content" tabindex="-1">
+			<div id="content" class="site-content" tabindex="-1" v-if="!cartProduct">
 				<div class="col-full">
 					<div class="woocommerce"></div>
 					<div id="primary">
+						<main id="main" class="site-main" role="main">
+							<article id="post-75" class="post-75 page type-page status-publish hentry">
+								<div class="entry-content">
+									<div class="woocommerce">
+										<div class="woocommerce-notices-wrapper"></div>
+										<p class="cart-empty woocommerce-info">Your cart is currently empty.</p>
+										<p class="return-to-shop">
+											<a class="button wc-backward" href="./index.html">
+												Return to home page </a>
+										</p>
+									</div>
+								</div>
+							</article>
+						</main>
+					</div>
+				</div>
+			</div>
+			<div id="content" class="site-content" tabindex="-1" v-else>
+				<div class="col-full">
+					<div class="woocommerce"></div>
+					<div id="primary" v-if="cartProduct">
 						<main id="main" class="site-main" role="main">
 							<article id="post-75" class="post-75 page type-page status-publish hentry">
 								<div class="entry-content">
@@ -411,133 +430,45 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="woocommerce-cart-form__cart-item cart_item">
+													<tr class="woocommerce-cart-form__cart-item cart_item" v-for="product in cartProduct">
 														<td class="product-remove">
-															<a href="https://demo2.pavothemes.com/freshio/cart/?remove_item=f7664060cc52bc6f3d620bcedc94a4b6&amp;_wpnonce=cbbbc2e2d7"
-																class="remove" aria-label="Remove this item"
-																data-product_id="266"
-																data-product_sku="durable-aluminum-shoes-62990271">×</a>
+															<a @click="removeItem(product)" class="remove">×</a>
 														</td>
 														<td class="product-thumbnail">
-															<a
-																href="https://demo2.pavothemes.com/freshio/product/durable-aluminum-shoes/"><img
+															<a><img
 																	width="450" height="420"
-																	src="https://demo2.pavothemes.com/freshio/wp-content/uploads/2020/08/27-450x420.jpg"
+																	:src="product.image"
 																	class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
 																	alt=""></a> </td>
 														<td class="product-name" data-title="Product">
-															<a
-																href="https://demo2.pavothemes.com/freshio/product/durable-aluminum-shoes/">Durable
-																Aluminum Shoes</a> </td>
+															<a>{{product.name}}</a> </td>
 														<td class="product-price" data-title="Price">
 															<span class="woocommerce-Price-amount amount"><bdi><span
-																		class="woocommerce-Price-currencySymbol">£</span>366.90</bdi></span>
+																		class="woocommerce-Price-currencySymbol">₹</span>{{product.sellablePrice}}</bdi></span>
 														</td>
 														<td class="product-quantity" data-title="Quantity">
 															<div class="quantity">
 																<label class="screen-reader-text"
-																	for="quantity_5fb02fd86d11e">Durable Aluminum Shoes
-																	quantity</label>
-																<input type="number" id="quantity_5fb02fd86d11e"
-																	class="input-text qty text" step="1" min="0"
-																	max="97"
-																	name="cart[f7664060cc52bc6f3d620bcedc94a4b6][qty]"
-																	value="2" title="Qty" size="4" placeholder=""
-																	inputmode="numeric">
+																	for="quantity_5fb02fd86d11e">{{product.name}}</label>
+																<input type="number" 
+																	id="quantity_5fb02fd86d11e"
+																	class="input-text qty text" 
+																	step="1" 
+																	min="0"
+																	:max="product.available_quantity"
+																	:name="product.name"
+																	:value="product.productCount" 
+																	v-model="product.productCount" 
+																	title="Qty" 
+																	size="4" 
+																	placeholder=""
+																	inputmode="numeric"
+																	@change="counterChange()"/>
 															</div>
 														</td>
 														<td class="product-subtotal" data-title="Subtotal">
-															<span class="woocommerce-Price-amount amount"><bdi><span
-																		class="woocommerce-Price-currencySymbol">£</span>733.80</bdi></span>
-														</td>
-													</tr>
-													<tr class="woocommerce-cart-form__cart-item cart_item">
-														<td class="product-remove">
-															<a href="https://demo2.pavothemes.com/freshio/cart/?remove_item=555d6702c950ecb729a966504af0a635&amp;_wpnonce=cbbbc2e2d7"
-																class="remove" aria-label="Remove this item"
-																data-product_id="239"
-																data-product_sku="fantastic-granite-pants-27555569">×</a>
-														</td>
-														<td class="product-thumbnail">
-															<a
-																href="https://demo2.pavothemes.com/freshio/product/fantastic-granite-pants/"><img
-																	width="450" height="420"
-																	src="https://demo2.pavothemes.com/freshio/wp-content/uploads/2020/08/8-450x420.jpg"
-																	class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-																	alt=""></a> </td>
-														<td class="product-name" data-title="Product">
-															<a
-																href="https://demo2.pavothemes.com/freshio/product/fantastic-granite-pants/">Fantastic
-																Granite Pants</a> </td>
-														<td class="product-price" data-title="Price">
-															<span class="woocommerce-Price-amount amount"><bdi><span
-																		class="woocommerce-Price-currencySymbol">£</span>35.12</bdi></span>
-														</td>
-														<td class="product-quantity" data-title="Quantity">
-															<div class="quantity">
-																<label class="screen-reader-text"
-																	for="quantity_5fb02fd86da8e">Fantastic Granite Pants
-																	quantity</label>
-																<input type="number" id="quantity_5fb02fd86da8e"
-																	class="input-text qty text" step="1" min="0" max=""
-																	name="cart[555d6702c950ecb729a966504af0a635][qty]"
-																	value="1" title="Qty" size="4" placeholder=""
-																	inputmode="numeric">
-															</div>
-														</td>
-														<td class="product-subtotal" data-title="Subtotal">
-															<span class="woocommerce-Price-amount amount"><bdi><span
-																		class="woocommerce-Price-currencySymbol">£</span>35.12</bdi></span>
-														</td>
-													</tr>
-													<tr class="woocommerce-cart-form__cart-item cart_item">
-														<td class="product-remove">
-															<a href="https://demo2.pavothemes.com/freshio/cart/?remove_item=d6baf65e0b240ce177cf70da146c8dc8&amp;_wpnonce=cbbbc2e2d7"
-																class="remove" aria-label="Remove this item"
-																data-product_id="264"
-																data-product_sku="enormous-silk-computer-61767652">×</a>
-														</td>
-														<td class="product-thumbnail">
-															<a
-																href="https://demo2.pavothemes.com/freshio/product/enormous-silk-computer/"><img
-																	width="450" height="420"
-																	src="https://demo2.pavothemes.com/freshio/wp-content/uploads/2020/08/25-450x420.jpg"
-																	class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-																	alt=""></a> </td>
-														<td class="product-name" data-title="Product">
-															<a
-																href="https://demo2.pavothemes.com/freshio/product/enormous-silk-computer/">Enormous
-																Silk Computer</a> </td>
-														<td class="product-price" data-title="Price">
-															<span class="woocommerce-Price-amount amount"><bdi><span
-																		class="woocommerce-Price-currencySymbol">£</span>450.89</bdi></span>
-														</td>
-														<td class="product-quantity" data-title="Quantity">
-															<div class="quantity">
-																<label class="screen-reader-text"
-																	for="quantity_5fb02fd86e495">Enormous Silk Computer
-																	quantity</label>
-																<input type="number" id="quantity_5fb02fd86e495"
-																	class="input-text qty text" step="1" min="0" max=""
-																	name="cart[d6baf65e0b240ce177cf70da146c8dc8][qty]"
-																	value="1" title="Qty" size="4" placeholder=""
-																	inputmode="numeric">
-															</div>
-														</td>
-														<td class="product-subtotal" data-title="Subtotal">
-															<span class="woocommerce-Price-amount amount"><bdi><span
-																		class="woocommerce-Price-currencySymbol">£</span>450.89</bdi></span>
-														</td>
-													</tr>
-													<tr>
-														<td colspan="6" class="actions">
-															<button type="submit" class="button" name="update_cart"
-																value="Update cart" disabled=""
-																aria-disabled="true">Update cart</button>
-															<input type="hidden" id="woocommerce-cart-nonce"
-																name="woocommerce-cart-nonce" value="cbbbc2e2d7"><input
-																type="hidden" name="_wp_http_referer"
-																value="/freshio/cart/">
+															<span class="woocommerce-Price-amount amount"><bdi>
+															<span class="woocommerce-Price-currencySymbol">₹</span>{{product.productCount * product.sellablePrice}}</bdi></span>
 														</td>
 													</tr>
 												</tbody>
@@ -552,22 +483,22 @@
 															<th>Subtotal</th>
 															<td data-title="Subtotal"><span
 																	class="woocommerce-Price-amount amount"><bdi><span
-																			class="woocommerce-Price-currencySymbol">£</span>1,219.81</bdi></span>
+																			class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</bdi></span>
 															</td>
 														</tr>
 														<tr class="order-total">
 															<th>Total</th>
 															<td data-title="Total"><strong><span
 																		class="woocommerce-Price-amount amount"><bdi><span
-																				class="woocommerce-Price-currencySymbol">£</span>1,219.81</bdi></span></strong>
+																				class="woocommerce-Price-currencySymbol">₹</span>{{checkoutAmount}}</bdi></span></strong>
 															</td>
 														</tr>
 													</tbody>
 												</table>
 												<div class="wc-proceed-to-checkout">
-													<a href="https://demo2.pavothemes.com/freshio/checkout/"
-														class="checkout-button button alt wc-forward">
-														Proceed to checkout</a>
+													<button @click="checkoutButton()"
+														class="checkout-button button alt wc-forward" style="width: 100%;" :disabled="checkoutAmount <= 0">
+														Proceed to checkout</button>
 												</div>
 											</div>
 										</div>
@@ -578,11 +509,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
-
 			<footer id="colophon" class="site-footer">
 				<div data-elementor-type="section" data-elementor-id="752" class="elementor elementor-752"
 					data-elementor-settings="[]">
@@ -894,9 +820,41 @@
 	<script>
 		var app = new Vue({
 			el: '#app',
+
 			data: {
-				message: 'Hello Vue!'
-			}
+				cartProduct: null,
+				subTotal: 0,
+				checkoutAmount: 0
+			},
+
+			async created() {
+				var retrievedObject =  await localStorage.getItem('cartObject');
+				this.cartProduct = JSON.parse(retrievedObject);
+				this.counterChange();
+			},
+
+			methods: {
+				async removeItem(product) {
+					this.cartProduct = null;
+					await localStorage.clear();
+				},
+
+				counterChange() {
+					const subtotal = this.cartProduct.reduce( function(cnt,o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
+					this.subTotal = subtotal;
+					this.checkoutAmount = subtotal;
+				},
+
+				async checkoutButton() {
+					if (this.checkoutAmount > 0) {
+						await localStorage.setItem('cartObject', JSON.stringify(this.cartProduct));
+						await localStorage.setItem('checkoutObject', JSON.stringify({checkoutAmount: this.checkoutAmount, subTotal: this.subTotal}));
+						window.location.href = './checkout.html';
+					} else {
+						alert('Please update the quantity')
+					}
+				}
+			},
 		})
 	</script>
 

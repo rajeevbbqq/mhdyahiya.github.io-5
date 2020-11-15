@@ -290,6 +290,7 @@
 		}
 	</style>
 	<script src="./assets/javascript/vue-2.6.12.js"></script>
+	<script src="./assets/javascript/axios.min.js"></script>
 </head>
 
 <body
@@ -383,9 +384,6 @@
 							class="breadcrumb-separator"> / </span>Checkout</nav>
 				</div>
 			</div>
-
-
-
 			<div id="content" class="site-content" tabindex="-1">
 				<div class="col-full">
 					<div id="primary">
@@ -394,22 +392,8 @@
 								<div class="entry-content">
 									<div class="woocommerce">
 										<div class="woocommerce-notices-wrapper"></div>
-										<form class="checkout_coupon woocommerce-form-coupon" method="post"
-											style="display:none">
-											<p class="form-row form-row-first">
-												<input type="text" name="coupon_code" class="input-text"
-													placeholder="Coupon code" id="coupon_code" value="">
-											</p>
-											<p class="form-row form-row-last">
-												<button type="submit" class="button" name="apply_coupon"
-													value="Apply coupon">Apply coupon</button>
-											</p>
-											<div class="clear"></div>
-										</form>
 										<div class="woocommerce-notices-wrapper"></div>
-										<form name="checkout" method="post" class="checkout woocommerce-checkout"
-											action="https://demo2.pavothemes.com/freshio/checkout/"
-											enctype="multipart/form-data" novalidate="novalidate">
+										<form name="checkout">
 											<div class="col2-set" id="customer_details">
 												<div class="col-1">
 													<div class="woocommerce-billing-fields">
@@ -437,29 +421,47 @@
 																		autocomplete="family-name"></span></p>
 															<p class="form-row address-field validate-required form-row-wide"
 																id="billing_address_1_field" data-priority="50"><label
-																	for="billing_address_1" class="">Street
-																	address&nbsp;<abbr class="required"
+																	for="billing_address_1" class="">Address line 1&nbsp;<abbr class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
 																		class="input-text " name="billing_address_1"
 																		id="billing_address_1"
-																		placeholder="House number and street name"
+																		placeholder="Address line 1"
 																		value="" autocomplete="address-line1"
-																		data-placeholder="House number and street name"></span>
+																		data-placeholder="Address line 1"></span>
 															</p>
 															<p class="form-row address-field form-row-wide"
 																id="billing_address_2_field" data-priority="60"><label
 																	for="billing_address_2"
-																	class="screen-reader-text">Apartment, suite, unit,
-																	etc. (optional)&nbsp;<span
+																	class="screen-reader-text">Address line</label><span
+																	class="woocommerce-input-wrapper"><input type="text"
+																		class="input-text " name="billing_address_2"
+																		id="billing_address_2"
+																		placeholder="Address line 2"
+																		value="" autocomplete="address-line2"
+																		data-placeholder="Address line 2"></span>
+															</p>
+															<p class="form-row address-field form-row-wide"
+																id="billing_address_2_field" data-priority="60"><label
+																	for="billing_address_2"
+																	class="screen-reader-text">Address line 3&nbsp;<span
 																		class="optional">(optional)</span></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
 																		class="input-text " name="billing_address_2"
 																		id="billing_address_2"
-																		placeholder="Apartment, suite, unit, etc. (optional)"
+																		placeholder="Address line 3 (optional)"
 																		value="" autocomplete="address-line2"
-																		data-placeholder="Apartment, suite, unit, etc. (optional)"></span>
+																		data-placeholder="Address line 3 (optional)"></span>
 															</p>
+															<p class="form-row address-field validate-required form-row-wide"
+																id="billing_city_field" data-priority="70"
+																data-o_class="form-row form-row-wide address-field validate-required">
+																<label for="billing_city" class="">Landmark&nbsp;<abbr class="required"
+																		title="required">*</abbr></label><span
+																	class="woocommerce-input-wrapper"><input type="text"
+																		class="input-text " name="billing_city"
+																		id="billing_city" placeholder="" value=""
+																		autocomplete="address-level2"></span></p>
 															<p class="form-row address-field validate-required form-row-wide"
 																id="billing_city_field" data-priority="70"
 																data-o_class="form-row form-row-wide address-field validate-required">
@@ -473,8 +475,7 @@
 															<p class="form-row address-field validate-state form-row-wide"
 																id="billing_state_field" data-priority="80"
 																data-o_class="form-row form-row-wide address-field validate-state">
-																<label for="billing_state" class="">County&nbsp;<span
-																		class="optional">(optional)</span></label><span
+																<label for="billing_state" class="">State</label><span
 																	class="woocommerce-input-wrapper"><input type="text"
 																		class="input-text " value="" placeholder=""
 																		name="billing_state" id="billing_state"
@@ -543,42 +544,34 @@
 															</tr>
 														</thead>
 														<tbody>
-															<tr class="cart_item">
+															<tr class="cart_item" v-for="product in cartProduct">
 																<td class="product-name">
-																	Ergonomic Iron Clock - 16&nbsp; <strong
-																		class="product-quantity">×&nbsp;1</strong> </td>
+																	{{product.name}}&nbsp; <strong
+																		class="product-quantity">×&nbsp;{{product.productCount}}</strong> </td>
 																<td class="product-total">
 																	<span class="woocommerce-Price-amount amount"><bdi><span
-																				class="woocommerce-Price-currencySymbol">£</span>930.97</bdi></span>
+																				class="woocommerce-Price-currencySymbol">₹</span>{{product.sellablePrice * product.productCount}}</bdi></span>
 																</td>
 															</tr>
 														</tbody>
 														<tfoot>
-
 															<tr class="cart-subtotal">
 																<th>Subtotal</th>
 																<td><span class="woocommerce-Price-amount amount"><bdi><span
-																				class="woocommerce-Price-currencySymbol">£</span>3,848.47</bdi></span>
+																				class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject.subTotal}}</bdi></span>
 																</td>
 															</tr>
-
-
-
-
-
-
 															<tr class="order-total">
 																<th>Total</th>
-																<td><strong><span
-																			class="woocommerce-Price-amount amount"><bdi><span
-																					class="woocommerce-Price-currencySymbol">£</span>3,848.47</bdi></span></strong>
+																<td>
+																	<strong>
+																		<span class="woocommerce-Price-amount amount"><bdi>
+																		<span class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject.checkoutAmount}}</bdi></span>
+																	</strong>
 																</td>
 															</tr>
-
-
 														</tfoot>
 													</table>
-
 												</div>
 												<div id="payment" class="woocommerce-checkout-payment">
 													<div class="form-row place-order">
@@ -586,23 +579,12 @@
 															<div class="woocommerce-privacy-policy-text">
 																<p>Your personal data will be used to process your
 																	order, support your experience throughout this
-																	website, and for other purposes described in our <a
-																		href="https://demo2.pavothemes.com/freshio/?page_id=3"
-																		class="woocommerce-privacy-policy-link"
-																		target="_blank">privacy policy</a>.</p>
+																	website.</p>
 															</div>
 														</div>
-
-
 														<button type="submit" class="button alt"
 															name="woocommerce_checkout_place_order" id="place_order"
 															value="Place order" data-value="Place order">Place order</button>
-
-														<input type="hidden" id="woocommerce-process-checkout-nonce"
-															name="woocommerce-process-checkout-nonce"
-															value="3c02587b60"><input type="hidden"
-															name="_wp_http_referer"
-															value="/freshio/?wc-ajax=update_order_review">
 													</div>
 												</div>
 
@@ -615,11 +597,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
-
 			<footer id="colophon" class="site-footer">
 				<div data-elementor-type="section" data-elementor-id="752" class="elementor elementor-752"
 					data-elementor-settings="[]">
@@ -931,9 +908,23 @@
 	<script>
 		var app = new Vue({
 			el: '#app',
+
 			data: {
-				message: 'Hello Vue!'
-			}
+				cartProduct: null,
+				checkoutObject: null
+			},
+
+			async created() {
+				var checkoutObject =  await localStorage.getItem('checkoutObject');
+				if (!checkoutObject) {
+					window.location.href = './index.html';
+					return
+				} else {
+					var cartObject =  await localStorage.getItem('cartObject');
+					this.cartProduct = JSON.parse(cartObject);
+					this.checkoutObject = JSON.parse(checkoutObject);
+				}
+			},
 		})
 	</script>
 
