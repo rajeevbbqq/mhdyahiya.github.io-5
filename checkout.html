@@ -561,7 +561,7 @@
 															<tr class="cart-subtotal">
 																<th>Subtotal</th>
 																<td><span class="woocommerce-Price-amount amount"><bdi><span
-																				class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject.subTotal}}</bdi></span>
+																				class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject && checkoutObject.subTotal}}</bdi></span>
 																</td>
 															</tr>
 															<tr class="order-total">
@@ -571,7 +571,7 @@
 																		<span
 																			class="woocommerce-Price-amount amount"><bdi>
 																				<span
-																					class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject.checkoutAmount}}</bdi></span>
+																					class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject && checkoutObject.checkoutAmount}}</bdi></span>
 																	</strong>
 																</td>
 															</tr>
@@ -592,7 +592,6 @@
 															value="Place order" data-value="Place order">Place order</button>
 													</div>
 												</div>
-
 											</div>
 										</form>
 									</div>
