@@ -269,6 +269,13 @@
                     src="./assets/images/foodmania_logo.png" data-src="./assets/images/foodmania_logo.png"
                     class="lazyload logo-dark" alt="Logo" /></a>
               </div>
+              <div class="site-header-cart header-cart-mobile">
+                <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                  <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                  <span class="woocommerce-Price-amount amount"><span
+                      class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                </a>
+              </div>
             </div>
             <div class="header-center d-flex align-items-center desktop-hide-down">
               <nav class="main-navigation">
@@ -284,15 +291,14 @@
                 </div>
               </nav>
             </div>
-            <div class="right desktop-hide-down">
+            <div class="header-right tablet-hide-down desktop-hide-down">
               <div class="header-group-action">
-                <div class="freshio-contact">
-                  <div class="contact_inner">
-                    <div class="contact_icon"> <i class="freshio-icon-headphones-alt" aria-hidden="true"></i></div>
-                    <div class="contact_content"> <span class="sub-title">Call us 24/7</span> <span class="title"><a
-                          href="tel:+917012006806">(+91) 7012006806</a></span>
-                    </div>
-                  </div>
+                <div class="site-header-cart menu">
+                  <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                    <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                    <span class="woocommerce-Price-amount amount"><span
+                        class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -303,14 +309,14 @@
         <div class="col-full">
           <div class="header-group-layout">
             <div class="site-branding">
-              <a href="../index.html" class="custom-logo-link" rel="home"><img src="./assets/images/foodmania_logo.png"
+              <a href="./index.html" class="custom-logo-link" rel="home"><img src="./assets/images/foodmania_logo.png"
                   data-src="./assets/images/foodmania_logo.png" class="lazyload logo-light" alt="Logo" /><img
                   src="./assets/images/foodmania_logo.png" data-src="./assets/images/foodmania_logo.png"
                   class="lazyload logo-dark" alt="Logo" /></a>
             </div>
             <nav class="main-navigation">
               <div class="primary-navigation">
-                <ul id="menu-main-menu" class="menu">
+                <ul id="menu-main-menu-1" class="menu">
                   <li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
                     <a href="./about-us.html"><span class="menu-title">About us</span></a>
                   </li>
@@ -320,6 +326,22 @@
                 </ul>
               </div>
             </nav>
+            <div class="header-group-action desktop-hide-down">
+              <div class="site-header-cart menu">
+                <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                  <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                  <span class="woocommerce-Price-amount amount"><span
+                      class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                </a>
+              </div>
+            </div>
+            <div class="site-header-cart header-cart-mobile">
+              <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                <span class="woocommerce-Price-amount amount"><span
+                    class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+              </a>
+            </div>
             <a href="#" class="menu-mobile-nav-button">
               <span class="toggle-text screen-reader-text">Menu</span>
               <i class="freshio-icon-bars"></i>
@@ -769,9 +791,10 @@
                                                     <ins><span class="woocommerce-Price-amount amount"><bdi><span
                                                             class="woocommerce-Price-currencySymbol">₹
                                                           </span>{{product.sellablePrice}}</bdi></span></ins></span>
-                                                  <a v-if="product.is_shippable" data-quantity="1" @click="addToCart(product)"
-                                                    class="button product_type_simple" data-product_id="284"
-                                                    data-product_sku="rustic-paper-pants-99936556" rel="nofollow">Add to cart</a>
+                                                  <a v-if="product.is_shippable" data-quantity="1"
+                                                    @click="addToCart(product)" class="button product_type_simple"
+                                                    data-product_id="284" data-product_sku="rustic-paper-pants-99936556"
+                                                    rel="nofollow">Add to cart</a>
                                                   <a v-if="!product.is_shippable">Not available</a>
                                                 </div>
                                               </li>
@@ -1576,6 +1599,7 @@
   <script>
     var app = new Vue({
       el: '#app',
+
       data: {
         products: [
           {
@@ -1587,7 +1611,16 @@
             "available_quantity": "10",
             "is_shippable": true
           }
-        ]
+        ],
+        cartProduct: null,
+        subTotal: 0,
+        checkoutAmount: 0
+      },
+
+      async created() {
+        var retrievedObject = await localStorage.getItem('cartObject');
+        this.cartProduct = JSON.parse(retrievedObject);
+        this.counterChange();
       },
 
       methods: {
@@ -1595,7 +1628,13 @@
           product.productCount = 1;
           await localStorage.setItem('cartObject', JSON.stringify([product]));
           window.location.href = './cart.html';
-        }
+        },
+
+        counterChange() {
+          const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
+          this.subTotal = subtotal;
+          this.checkoutAmount = subtotal;
+        },
       }
     })
   </script>

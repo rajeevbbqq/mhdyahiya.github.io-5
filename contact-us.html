@@ -251,47 +251,56 @@
     class="page-template-default page page-id-88 wp-embed-responsive theme-freshio woocommerce-no-js woo-variation-swatches woo-variation-swatches-on-mobile wvs-theme-demo-child wvs-theme-child-freshio wvs-style-squared wvs-attr-behavior-blur wvs-tooltip wvs-css chrome product-hover-default freshio-layout-wide woocommerce-active product-style-1 single-product-1 freshio-footer-builder elementor-default elementor-kit-334 elementor-page elementor-page-88">
     <div id="app">
         <div id="page" class="hfeed site">
-            <header id="masthead" class="site-header header-2" style="">
+            <header id="masthead" class="site-header header-1" style="">
                 <div class="header-main">
-                    <div class="inner">
-                        <div class="left">
-                            <div class="site-branding"> <a href="./index.html" class="custom-logo-link" rel="home"><img
-                                        src='./assets/images/foodmania_logo.png'
+                    <div class="container inner">
+                        <div class="header-left">
+                            <a href="#" class="menu-mobile-nav-button">
+                                <span class="toggle-text screen-reader-text">Menu</span>
+                                <i class="freshio-icon-bars"></i>
+                            </a>
+                            <div class="site-branding">
+                                <a href="./index.html" class="custom-logo-link" rel="home"><img
+                                        src="./assets/images/foodmania_logo.png"
                                         data-src="./assets/images/foodmania_logo.png" class="lazyload logo-light"
-                                        alt="Logo" /><img src='./assets/images/foodmania_logo.png'
+                                        alt="Logo" /><img src="./assets/images/foodmania_logo.png"
                                         data-src="./assets/images/foodmania_logo.png" class="lazyload logo-dark"
-                                        alt="Logo" /></a></div>
-                        </div>
-                        <div class="right desktop-hide-down">
-                            <div class="header-group-action">
-                                <div class="freshio-contact">
-                                    <div class="contact_inner">
-                                        <div class="contact_icon"> <i class="freshio-icon-headphones-alt"
-                                                aria-hidden="true"></i></div>
-                                        <div class="contact_content"> <span class="sub-title">Call us 24/7</span> <span
-                                                class="title"><a href="tel:+917012006806">(+91) 7012006806</a></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                        alt="Logo" /></a>
+                            </div>
+                            <div class="site-header-cart header-cart-mobile">
+                                <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                    <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                    <span class="woocommerce-Price-amount amount"><span
+                                            class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="header-bottom desktop-hide-down header-navigation-background">
-                    <div class="inner">
-                        <div class="right">
+                        <div class="header-center d-flex align-items-center desktop-hide-down">
                             <nav class="main-navigation">
                                 <div class="primary-navigation">
                                     <ul id="menu-main-menu" class="menu">
+                                        <li id="menu-item-81"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+                                            <a href="./about-us.html"><span class="menu-title">About us</span></a>
+                                        </li>
                                         <li id="menu-item-89"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72">
-                                            <a href="./about-us.html"><span class="menu-title">About us</span></a></li>
-                                        <li id="menu-item-89"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72">
-                                            <a href="./contact-us.html"><span class="menu-title">Contact</span></a></li>
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+                                            <a href="./contact-us.html"><span class="menu-title">Contact</span></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>
+                        </div>
+                        <div class="header-right tablet-hide-down desktop-hide-down">
+                            <div class="header-group-action">
+                                <div class="site-header-cart menu">
+                                    <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                        <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                        <span class="woocommerce-Price-amount amount"><span
+                                                class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -299,15 +308,17 @@
             <div class="header-sticky hide-scroll-down">
                 <div class="col-full">
                     <div class="header-group-layout">
-                        <div class="site-branding"> <a href="./index.html" class="custom-logo-link" rel="home"><img
-                                    src='./assets/images/foodmania_logo.png'
+                        <div class="site-branding">
+                            <a href="./index.html" class="custom-logo-link" rel="home"><img
+                                    src="./assets/images/foodmania_logo.png"
                                     data-src="./assets/images/foodmania_logo.png" class="lazyload logo-light"
-                                    alt="Logo" /><img src='./assets/images/foodmania_logo.png'
+                                    alt="Logo" /><img src="./assets/images/foodmania_logo.png"
                                     data-src="./assets/images/foodmania_logo.png" class="lazyload logo-dark"
-                                    alt="Logo" /></a></div>
+                                    alt="Logo" /></a>
+                        </div>
                         <nav class="main-navigation">
                             <div class="primary-navigation">
-                                <ul id="menu-main-menu" class="menu">
+                                <ul id="menu-main-menu-1" class="menu">
                                     <li id="menu-item-81"
                                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
                                         <a href="./about-us.html"><span class="menu-title">About us</span></a>
@@ -319,6 +330,26 @@
                                 </ul>
                             </div>
                         </nav>
+                        <div class="header-group-action desktop-hide-down">
+                            <div class="site-header-cart menu">
+                                <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                    <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                    <span class="woocommerce-Price-amount amount"><span
+                                            class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="site-header-cart header-cart-mobile">
+                            <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                <span class="woocommerce-Price-amount amount"><span
+                                        class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                            </a>
+                        </div>
+                        <a href="#" class="menu-mobile-nav-button">
+                            <span class="toggle-text screen-reader-text">Menu</span>
+                            <i class="freshio-icon-bars"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -963,8 +994,25 @@
     <script>
         var app = new Vue({
             el: '#app',
+
             data: {
-                message: 'Hello Vue!'
+                cartProduct: null,
+                subTotal: 0,
+                checkoutAmount: 0
+            },
+
+            async created() {
+                var retrievedObject = await localStorage.getItem('cartObject');
+                this.cartProduct = JSON.parse(retrievedObject);
+                this.counterChange();
+            },
+
+            methods: {
+                counterChange() {
+                    const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
+                    this.subTotal = subtotal;
+                    this.checkoutAmount = subtotal;
+                },
             }
         })
     </script>

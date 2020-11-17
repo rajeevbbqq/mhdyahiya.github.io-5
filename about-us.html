@@ -254,47 +254,56 @@
 
     <div id="app">
         <div id="page" class="hfeed site">
-            <header id="masthead" class="site-header header-2" style="">
+            <header id="masthead" class="site-header header-1" style="">
                 <div class="header-main">
-                    <div class="inner">
-                        <div class="left">
-                            <div class="site-branding"> <a href="./index.html" class="custom-logo-link" rel="home"><img
-                                        src='./assets/images/foodmania_logo.png'
+                    <div class="container inner">
+                        <div class="header-left">
+                            <a href="#" class="menu-mobile-nav-button">
+                                <span class="toggle-text screen-reader-text">Menu</span>
+                                <i class="freshio-icon-bars"></i>
+                            </a>
+                            <div class="site-branding">
+                                <a href="./index.html" class="custom-logo-link" rel="home"><img
+                                        src="./assets/images/foodmania_logo.png"
                                         data-src="./assets/images/foodmania_logo.png" class="lazyload logo-light"
-                                        alt="Logo" /><img src='./assets/images/foodmania_logo.png'
+                                        alt="Logo" /><img src="./assets/images/foodmania_logo.png"
                                         data-src="./assets/images/foodmania_logo.png" class="lazyload logo-dark"
-                                        alt="Logo" /></a></div>
-                        </div>
-                        <div class="right desktop-hide-down">
-                            <div class="header-group-action">
-                                <div class="freshio-contact">
-                                    <div class="contact_inner">
-                                        <div class="contact_icon"> <i class="freshio-icon-headphones-alt"
-                                                aria-hidden="true"></i></div>
-                                        <div class="contact_content"> <span class="sub-title">Call us 24/7</span> <span
-                                                class="title"><a href="tel:+917012006806">(+91) 7012006806</a></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                        alt="Logo" /></a>
+                            </div>
+                            <div class="site-header-cart header-cart-mobile">
+                                <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                    <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                    <span class="woocommerce-Price-amount amount"><span
+                                            class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="header-bottom desktop-hide-down header-navigation-background">
-                    <div class="inner">
-                        <div class="right">
+                        <div class="header-center d-flex align-items-center desktop-hide-down">
                             <nav class="main-navigation">
                                 <div class="primary-navigation">
                                     <ul id="menu-main-menu" class="menu">
+                                        <li id="menu-item-81"
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+                                            <a href="./about-us.html"><span class="menu-title">About us</span></a>
+                                        </li>
                                         <li id="menu-item-89"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72">
-                                            <a href="./about-us.html"><span class="menu-title">About us</span></a></li>
-                                        <li id="menu-item-89"
-                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72">
-                                            <a href="./contact-us.html"><span class="menu-title">Contact</span></a></li>
+                                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+                                            <a href="./contact-us.html"><span class="menu-title">Contact</span></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>
+                        </div>
+                        <div class="header-right tablet-hide-down desktop-hide-down">
+                            <div class="header-group-action">
+                                <div class="site-header-cart menu">
+                                    <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                        <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                        <span class="woocommerce-Price-amount amount"><span
+                                                class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -302,15 +311,17 @@
             <div class="header-sticky hide-scroll-down">
                 <div class="col-full">
                     <div class="header-group-layout">
-                        <div class="site-branding"> <a href="./index.html" class="custom-logo-link" rel="home"><img
-                                    src='./assets/images/foodmania_logo.png'
+                        <div class="site-branding">
+                            <a href="./index.html" class="custom-logo-link" rel="home"><img
+                                    src="./assets/images/foodmania_logo.png"
                                     data-src="./assets/images/foodmania_logo.png" class="lazyload logo-light"
-                                    alt="Logo" /><img src='./assets/images/foodmania_logo.png'
+                                    alt="Logo" /><img src="./assets/images/foodmania_logo.png"
                                     data-src="./assets/images/foodmania_logo.png" class="lazyload logo-dark"
-                                    alt="Logo" /></a></div>
+                                    alt="Logo" /></a>
+                        </div>
                         <nav class="main-navigation">
                             <div class="primary-navigation">
-                                <ul id="menu-main-menu" class="menu">
+                                <ul id="menu-main-menu-1" class="menu">
                                     <li id="menu-item-81"
                                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
                                         <a href="./about-us.html"><span class="menu-title">About us</span></a>
@@ -322,6 +333,26 @@
                                 </ul>
                             </div>
                         </nav>
+                        <div class="header-group-action desktop-hide-down">
+                            <div class="site-header-cart menu">
+                                <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                    <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                    <span class="woocommerce-Price-amount amount"><span
+                                            class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="site-header-cart header-cart-mobile">
+                            <a class="cart-contents" href="./cart.html" title="View your shopping cart">
+                                <span class="count">{{cartProduct ? cartProduct.length : 0}}</span>
+                                <span class="woocommerce-Price-amount amount"><span
+                                        class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</span>
+                            </a>
+                        </div>
+                        <a href="#" class="menu-mobile-nav-button">
+                            <span class="toggle-text screen-reader-text">Menu</span>
+                            <i class="freshio-icon-bars"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -612,148 +643,513 @@
                                                                             class="elementor-element elementor-element-a30dd84 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section"
                                                                             data-id="a30dd84"
                                                                             data-element_type="section">
-                                                                                <section class="cd-h-timeline js-cd-h-timeline margin-bottom-md">
-                                                                                    <div class="cd-h-timeline__container container">
-                                                                                      <div class="cd-h-timeline__dates">
-                                                                                        <div class="cd-h-timeline__line">
-                                                                                          <ol style="list-style-type: none;">
-                                                                                            <li><a href="#0" data-date="16/01/2014" class="cd-h-timeline__date cd-h-timeline__date--selected">16 Jan</a></li>
-                                                                                            <li><a href="#0" data-date="28/02/2014" class="cd-h-timeline__date">28 Feb</a></li>
-                                                                                            <li><a href="#0" data-date="20/04/2014" class="cd-h-timeline__date">20 Mar</a></li>
-                                                                                            <li><a href="#0" data-date="20/05/2014" class="cd-h-timeline__date">20 May</a></li>
-                                                                                            <li><a href="#0" data-date="09/07/2014" class="cd-h-timeline__date">09 Jul</a></li>
-                                                                                            <li><a href="#0" data-date="30/08/2014" class="cd-h-timeline__date">30 Aug</a></li>
-                                                                                            <li><a href="#0" data-date="15/09/2014" class="cd-h-timeline__date">15 Sep</a></li>
-                                                                                            <li><a href="#0" data-date="01/11/2014" class="cd-h-timeline__date">01 Nov</a></li>
-                                                                                            <li><a href="#0" data-date="10/12/2014" class="cd-h-timeline__date">10 Dec</a></li>
-                                                                                            <li><a href="#0" data-date="19/01/2015" class="cd-h-timeline__date">29 Jan</a></li>
-                                                                                            <li><a href="#0" data-date="03/03/2015" class="cd-h-timeline__date">3 Mar</a></li>
-                                                                                          </ol>
-                                                                                
-                                                                                          <span class="cd-h-timeline__filling-line" aria-hidden="true"></span>
-                                                                                        </div> <!-- .cd-h-timeline__line -->
-                                                                                      </div> <!-- .cd-h-timeline__dates -->
-                                                                                        
-                                                                                      <ul style="list-style-type: none;">
-                                                                                        <li><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--prev cd-h-timeline__navigation--inactive">Prev</a></li>
-                                                                                        <li><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--next">Next</a></li>
-                                                                                      </ul>
-                                                                                    </div> <!-- .cd-h-timeline__container -->
-                                                                                
-                                                                                    <div class="cd-h-timeline__events">
-                                                                                      <ol style="list-style-type: none;">
-                                                                                        <li class="cd-h-timeline__event cd-h-timeline__event--selected text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Horizontal Timeline</h2>
-                                                                                            <em class="cd-h-timeline__event-date">January 16th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+                                                                            <section
+                                                                                class="cd-h-timeline js-cd-h-timeline margin-bottom-md">
+                                                                                <div
+                                                                                    class="cd-h-timeline__container container">
+                                                                                    <div class="cd-h-timeline__dates">
+                                                                                        <div
+                                                                                            class="cd-h-timeline__line">
+                                                                                            <ol
+                                                                                                style="list-style-type: none;">
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="16/01/2014"
+                                                                                                        class="cd-h-timeline__date cd-h-timeline__date--selected">16
+                                                                                                        Jan</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="28/02/2014"
+                                                                                                        class="cd-h-timeline__date">28
+                                                                                                        Feb</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="20/04/2014"
+                                                                                                        class="cd-h-timeline__date">20
+                                                                                                        Mar</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="20/05/2014"
+                                                                                                        class="cd-h-timeline__date">20
+                                                                                                        May</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="09/07/2014"
+                                                                                                        class="cd-h-timeline__date">09
+                                                                                                        Jul</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="30/08/2014"
+                                                                                                        class="cd-h-timeline__date">30
+                                                                                                        Aug</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="15/09/2014"
+                                                                                                        class="cd-h-timeline__date">15
+                                                                                                        Sep</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="01/11/2014"
+                                                                                                        class="cd-h-timeline__date">01
+                                                                                                        Nov</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="10/12/2014"
+                                                                                                        class="cd-h-timeline__date">10
+                                                                                                        Dec</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="19/01/2015"
+                                                                                                        class="cd-h-timeline__date">29
+                                                                                                        Jan</a></li>
+                                                                                                <li><a href="#0"
+                                                                                                        data-date="03/03/2015"
+                                                                                                        class="cd-h-timeline__date">3
+                                                                                                        Mar</a></li>
+                                                                                            </ol>
+
+                                                                                            <span
+                                                                                                class="cd-h-timeline__filling-line"
+                                                                                                aria-hidden="true"></span>
+                                                                                        </div>
+                                                                                        <!-- .cd-h-timeline__line -->
+                                                                                    </div>
+                                                                                    <!-- .cd-h-timeline__dates -->
+
+                                                                                    <ul style="list-style-type: none;">
+                                                                                        <li><a href="#0"
+                                                                                                class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--prev cd-h-timeline__navigation--inactive">Prev</a>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">February 28th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+                                                                                        <li><a href="#0"
+                                                                                                class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--next">Next</a>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">March 20th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <!-- .cd-h-timeline__container -->
+
+                                                                                <div class="cd-h-timeline__events">
+                                                                                    <ol style="list-style-type: none;">
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event cd-h-timeline__event--selected text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Horizontal Timeline
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">January
+                                                                                                    16th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">May 20th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">February
+                                                                                                    28th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">July 9th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">March
+                                                                                                    20th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">August 30th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">May
+                                                                                                    20th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">September 15th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">July
+                                                                                                    9th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">November 1st, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">August
+                                                                                                    30th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">December 10th, 2014</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">September
+                                                                                                    15th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">January 29th, 2015</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">November
+                                                                                                    1st, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                
-                                                                                        <li class="cd-h-timeline__event text-component">
-                                                                                          <div class="cd-h-timeline__event-content container">
-                                                                                            <h2 class="cd-h-timeline__event-title">Event title here</h2>
-                                                                                            <em class="cd-h-timeline__event-date">March 3rd, 2015</em>
-                                                                                            <p class="cd-h-timeline__event-description color-contrast-medium"> 
-                                                                                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                                                                            </p>
-                                                                                          </div>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">December
+                                                                                                    10th, 2014</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
                                                                                         </li>
-                                                                                      </ol>
-                                                                                    </div> <!-- .cd-h-timeline__events -->
-                                                                                  </section>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">January
+                                                                                                    29th, 2015</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </li>
+
+                                                                                        <li
+                                                                                            class="cd-h-timeline__event text-component">
+                                                                                            <div
+                                                                                                class="cd-h-timeline__event-content container">
+                                                                                                <h2
+                                                                                                    class="cd-h-timeline__event-title">
+                                                                                                    Event title here
+                                                                                                </h2>
+                                                                                                <em
+                                                                                                    class="cd-h-timeline__event-date">March
+                                                                                                    3rd, 2015</em>
+                                                                                                <p
+                                                                                                    class="cd-h-timeline__event-description color-contrast-medium">
+                                                                                                    Lorem ipsum dolor
+                                                                                                    sit amet,
+                                                                                                    consectetur
+                                                                                                    adipisicing elit.
+                                                                                                    Illum praesentium
+                                                                                                    officia, fugit
+                                                                                                    recusandae ipsa,
+                                                                                                    quia velit nulla
+                                                                                                    adipisci?
+                                                                                                    Consequuntur
+                                                                                                    aspernatur at, eaque
+                                                                                                    hic repellendus sit
+                                                                                                    dicta consequatur
+                                                                                                    quae, ut harum ipsam
+                                                                                                    molestias maxime non
+                                                                                                    nisi reiciendis
+                                                                                                    eligendi! Doloremque
+                                                                                                    quia pariatur harum
+                                                                                                    ea amet quibusdam
+                                                                                                    quisquam, quae,
+                                                                                                    temporibus dolores
+                                                                                                    porro doloribus.
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </ol>
+                                                                                </div> <!-- .cd-h-timeline__events -->
+                                                                            </section>
                                                                         </section>
                                                                     </div>
                                                                 </div>
@@ -1807,8 +2203,25 @@
     <script>
         var app = new Vue({
             el: '#app',
+
             data: {
-                message: 'Hello Vue!'
+                cartProduct: null,
+                subTotal: 0,
+                checkoutAmount: 0
+            },
+
+            async created() {
+                var retrievedObject = await localStorage.getItem('cartObject');
+                this.cartProduct = JSON.parse(retrievedObject);
+                this.counterChange();
+            },
+
+            methods: {
+                counterChange() {
+                    const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
+                    this.subTotal = subtotal;
+                    this.checkoutAmount = subtotal;
+                },
             }
         })
     </script>
