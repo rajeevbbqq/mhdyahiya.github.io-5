@@ -457,7 +457,7 @@
 													<tr class="woocommerce-cart-form__cart-item cart_item"
 														v-for="product in cartProduct">
 														<td class="product-remove">
-															<a @click="removeItem(product)" class="remove">×</a>
+															<a @click="removeItem(product)" class="remove" style="cursor: pointer;">×</a>
 														</td>
 														<td class="product-thumbnail">
 															<a><img width="450" height="420" :src="product.image"
@@ -836,6 +836,8 @@
 			methods: {
 				async removeItem(product) {
 					this.cartProduct = null;
+					this.subTotal = 0;
+					this.checkoutAmount = 0;
 					await localStorage.clear();
 				},
 
