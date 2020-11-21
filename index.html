@@ -781,7 +781,7 @@
                                                             class="woocommerce-Price-currencySymbol">₹
                                                           </span>{{product.sellingPrice}}</bdi></span></ins></span>
                                                   <a v-if="product.isSellable" data-quantity="1"
-                                                    @click="placeOrder()" class="button product_type_simple"
+                                                    @click="addToCart(product)" class="button product_type_simple"
                                                     data-product_id="284" data-product_sku="rustic-paper-pants-99936556"
                                                     rel="nofollow">Add to cart</a>
                                                   <a v-if="!product.isSellable">Not available</a>
@@ -1633,26 +1633,14 @@
       el: '#app',
 
       data: {
-        products: [
-                                {
-                                "id": "8d962b69-8e6c-4f5c-8e10-6f1b74475b1f",
-                                "productName": "Cocunut pickle",
-                                "sellingPrice": 99,
-                                "productImage": "https://foodmania-assets.s3.ap-south-1.amazonaws.com/62AC9BF7-7234-4112-BC85-10CB29797C6B-A204ACC1-699F-4B22-84CA-EB0B8559BC4A.jpg",
-                                "isSellable": true,
-                                "shippingChargePerQty": 50,
-                                "platformChargePercent": 2
-                                }
-                              ],
+        products: [],
         cartProduct: null,
         subTotal: 0,
-        checkoutAmount: 0,
-				billing: {},
-				apiError: null
+        checkoutAmount: 0
       },
 
       async created() {
-        // await this.getProducts();
+        await this.getProducts();
         var retrievedObject = await localStorage.getItem('cartObject');
         this.cartProduct = JSON.parse(retrievedObject);
         this.counterChange();
@@ -1669,31 +1657,6 @@
             });
         },
 
-        placeOrder() {
-					var data = {
-					    "productId": this.cartProduct[0].id,
-					    "productQty": this.cartProduct[0].productCount,
-					    "customerName": this.billing.first_name + ' ' + this.billing.last_name,
-					    "customerEmail": this.billing.email,
-					    "customerPhone": this.billing.phone,
-					    "addressLine1": this.billing.address_1,
-						"addressLine2": this.billing.address_2,
-						"landmark": this.billing.landmark,
-					    "city": this.billing.city,
-					    "state": this.billing.state,
-					    "pincode": this.billing.postcode
-					};
-
-					axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', data)
-					.then((response) => {
-						console.log(response);
-					})
-					.catch((error) => {
-						console.log(error);
-						this.apiError = error;
-					});
-				},
-
         async addToCart(product) {
           product.productCount = 1;
           await localStorage.setItem('cartObject', JSON.stringify([product]));
@@ -1701,7 +1664,7 @@
         },
 
         counterChange() {
-          const subtotal = this.cartProduct && this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0);
+          const subtotal = this.cartProduct && this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
           this.subTotal = subtotal;
           this.checkoutAmount = subtotal;
         },
