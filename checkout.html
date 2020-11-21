@@ -573,20 +573,34 @@
 														<tbody>
 															<tr class="cart_item" v-for="product in cartProduct">
 																<td class="product-name">
-																	{{product.name}}&nbsp; <strong
+																	{{product.productName}}&nbsp; <strong
 																		class="product-quantity">×&nbsp;{{product.productCount}}</strong>
 																</td>
 																<td class="product-total">
 																	<span class="woocommerce-Price-amount amount"><bdi><span
-																				class="woocommerce-Price-currencySymbol">₹</span>{{product.sellablePrice * product.productCount}}</bdi></span>
+																				class="woocommerce-Price-currencySymbol">₹</span>{{product.sellingPrice * product.productCount}}</bdi></span>
 																</td>
 															</tr>
 														</tbody>
 														<tfoot>
-															<tr class="cart-subtotal">
+															<!-- <tr class="cart-subtotal">
 																<th>Subtotal</th>
 																<td><span class="woocommerce-Price-amount amount"><bdi><span
 																				class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject && checkoutObject.subTotal}}</bdi></span>
+																</td>
+															</tr> -->
+															<tr>
+																<th>Shipping charge</th>
+																<td data-title="Subtotal"><span
+																		class="woocommerce-Price-amount amount"><bdi><span
+																				class="woocommerce-Price-currencySymbol">₹</span>{{shippingChargePerQty}}</bdi></span>
+																</td>
+															</tr>
+															<tr >
+																<th>Platform charge</th>
+																<td data-title="Subtotal"><span
+																		class="woocommerce-Price-amount amount"><bdi><span
+																				class="woocommerce-Price-currencySymbol">₹</span>{{platformChargePercent}}</bdi></span>
 																</td>
 															</tr>
 															<tr class="order-total">
@@ -922,7 +936,9 @@
 				cartProduct: null,
 				checkoutObject: null,
 				subTotal: 0,
-				checkoutAmount: 0
+				checkoutAmount: 0,
+				shippingChargePerQty: 0,
+				platformChargePercent: 0
 			},
 
 			async created() {
@@ -933,6 +949,8 @@
 				} else {
 					var cartObject = await localStorage.getItem('cartObject');
 					this.cartProduct = JSON.parse(cartObject);
+					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty;
+					this.platformChargePercent = this.cartProduct[0].platformChargePercent;
 					this.checkoutObject = JSON.parse(checkoutObject);
 					this.counterChange();
 				}
@@ -940,7 +958,7 @@
 
 			methods: {
 				counterChange() {
-					const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
+					const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0);
 					this.subTotal = subtotal;
 					this.checkoutAmount = subtotal;
 				},

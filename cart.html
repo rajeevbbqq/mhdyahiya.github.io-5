@@ -460,23 +460,23 @@
 															<a @click="removeItem(product)" class="remove" style="cursor: pointer;">×</a>
 														</td>
 														<td class="product-thumbnail">
-															<a><img width="450" height="420" :src="product.image"
+															<a><img width="450" height="420" :src="product.productImage"
 																	class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
 																	alt=""></a> </td>
 														<td class="product-name" data-title="Product">
-															<a>{{product.name}}</a> </td>
+															<a>{{product.productName}}</a> </td>
 														<td class="product-price" data-title="Price">
 															<span class="woocommerce-Price-amount amount"><bdi><span
-																		class="woocommerce-Price-currencySymbol">₹</span>{{product.sellablePrice}}</bdi></span>
+																		class="woocommerce-Price-currencySymbol">₹</span>{{product.sellingPrice}}</bdi></span>
 														</td>
 														<td class="product-quantity" data-title="Quantity">
 															<div class="quantity">
 																<label class="screen-reader-text"
-																	for="quantity_5fb02fd86d11e">{{product.name}}</label>
+																	for="quantity_5fb02fd86d11e">{{product.productName}}</label>
 																<input type="number" id="quantity_5fb02fd86d11e"
 																	class="input-text qty text" step="1" min="0"
-																	:max="product.available_quantity"
-																	:name="product.name" :value="product.productCount"
+																	:max="product.available_quantity || 5"
+																	:name="product.productName" :value="product.productCount"
 																	v-model="product.productCount" title="Qty" size="4"
 																	placeholder="" inputmode="numeric"
 																	@change="counterChange()" />
@@ -485,7 +485,7 @@
 														<td class="product-subtotal" data-title="Subtotal">
 															<span class="woocommerce-Price-amount amount"><bdi>
 																	<span
-																		class="woocommerce-Price-currencySymbol">₹</span>{{product.productCount * product.sellablePrice}}</bdi></span>
+																		class="woocommerce-Price-currencySymbol">₹</span>{{product.productCount * product.sellingPrice}}</bdi></span>
 														</td>
 													</tr>
 												</tbody>
@@ -496,11 +496,25 @@
 												<h2>Cart totals</h2>
 												<table cellspacing="0" class="shop_table shop_table_responsive">
 													<tbody>
-														<tr class="cart-subtotal">
+														<tr>
 															<th>Subtotal</th>
 															<td data-title="Subtotal"><span
 																	class="woocommerce-Price-amount amount"><bdi><span
 																			class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</bdi></span>
+															</td>
+														</tr>
+														<tr>
+															<th>Shipping charge</th>
+															<td data-title="Subtotal"><span
+																	class="woocommerce-Price-amount amount"><bdi><span
+																			class="woocommerce-Price-currencySymbol">₹</span>{{shippingChargePerQty}}</bdi></span>
+															</td>
+														</tr>
+														<tr >
+															<th>Platform charge</th>
+															<td data-title="Subtotal"><span
+																	class="woocommerce-Price-amount amount"><bdi><span
+																			class="woocommerce-Price-currencySymbol">₹</span>{{platformChargePercent}}</bdi></span>
 															</td>
 														</tr>
 														<tr class="order-total">
@@ -824,12 +838,16 @@
 			data: {
 				cartProduct: null,
 				subTotal: 0,
-				checkoutAmount: 0
+				checkoutAmount: 0,
+				shippingChargePerQty: 0,
+				platformChargePercent: 0
 			},
 
 			async created() {
 				var retrievedObject = await localStorage.getItem('cartObject');
-				this.cartProduct = JSON.parse(retrievedObject);
+				this.cartProduct = await JSON.parse(retrievedObject);
+				this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty;
+				this.platformChargePercent = this.cartProduct[0].platformChargePercent;
 				this.counterChange();
 			},
 
@@ -842,9 +860,9 @@
 				},
 
 				counterChange() {
-					const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
+					const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0);
 					this.subTotal = subtotal;
-					this.checkoutAmount = subtotal;
+					this.checkoutAmount = subtotal + this.shippingChargePerQty + this.platformChargePercent;
 				},
 
 				async checkoutButton() {
