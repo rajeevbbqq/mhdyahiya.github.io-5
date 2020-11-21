@@ -244,7 +244,8 @@
     }
   </style>
   <script src="./assets/javascript/vue-2.6.12.js"></script>
-  <script src="./assets/javascript/axios.min.js"></script>
+  <!-- <script src="./assets/javascript/axios.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body
@@ -1660,26 +1661,12 @@
         getProducts() {
           axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
             .then((response) => {
-              console.log(response);
+              console.log(response.data.data);
+              this.products = response.data.data;
             })
             .catch((error) => {
               console.log(error);
             });
-
-          // var settings = {
-          //     'cache': false,
-          //     "async": true,
-          //     "crossDomain": true,
-          //     "url": "https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products",
-          //     "method": "GET",
-          //     "headers": {
-          //         "accept": "application/json",
-          //         "Access-Control-Allow-Origin":"*"
-          //     }
-          // }
-          // $.ajax(settings).done(function (response) {
-          //   console.log(response);
-          // });
         },
 
         async addToCart(product) {
