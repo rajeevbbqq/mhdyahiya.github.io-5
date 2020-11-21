@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US" class="">
-<!-- Mirrored from demo2.pavothemes.com/freshio/home-4/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Nov 2020 08:41:09 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
   <meta charset="UTF-8" />
@@ -213,7 +210,6 @@
     id="jquery-core-js"></script>
   <link rel="https://api.w.org/" href="../wp-json/index.html" />
   <link rel="alternate" type="application/json" href="../wp-json/wp/v2/pages/59.json" />
-  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
   <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../wp-includes/wlwmanifest.xml" />
   <meta name="generator" content="WordPress 5.5.3" />
   <meta name="generator" content="WooCommerce 4.4.1" />
@@ -1628,6 +1624,10 @@
     <div class="freshio-overlay"></div>
   </div>
 
+  <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script>
+
   <script>
     var app = new Vue({
       el: '#app',
@@ -1650,12 +1650,38 @@
       },
 
       async created() {
+        await this.getProducts();
         var retrievedObject = await localStorage.getItem('cartObject');
         this.cartProduct = JSON.parse(retrievedObject);
         this.counterChange();
       },
 
       methods: {
+        getProducts() {
+          axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          // var settings = {
+          //     'cache': false,
+          //     "async": true,
+          //     "crossDomain": true,
+          //     "url": "https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products",
+          //     "method": "GET",
+          //     "headers": {
+          //         "accept": "application/json",
+          //         "Access-Control-Allow-Origin":"*"
+          //     }
+          // }
+          // $.ajax(settings).done(function (response) {
+          //   console.log(response);
+          // });
+        },
+
         async addToCart(product) {
           product.productCount = 1;
           await localStorage.setItem('cartObject', JSON.stringify([product]));
@@ -1663,7 +1689,7 @@
         },
 
         counterChange() {
-          const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
+          const subtotal = this.cartProduct && this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellablePrice * o.productCount); }, 0);
           this.subTotal = subtotal;
           this.checkoutAmount = subtotal;
         },
@@ -1672,22 +1698,6 @@
   </script>
 
   <script data-cfasync="false" src="./assets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script type="text/html" id="tmpl-ajax-live-search-template">
-      <div class="product-item-search">
-        <# if(data.url){ #>
-        <a class="product-link" href="{{{data.url}}}" title="{{{data.title}}}">
-          <# } #> <# if(data.img){#>
-          <img src="{{{data.img}}}" alt="{{{data.title}}}" />
-          <# } #>
-          <div class="product-content">
-            <h3 class="product-title">{{{data.title}}}</h3>
-            <# if(data.price){ #> {{{data.price}}} <# } #>
-          </div>
-          <# if(data.url){ #>
-        </a>
-        <# } #>
-      </div>
-    </script>
   <link data-minify="1" rel="stylesheet" property="stylesheet" id="rs-icon-set-fa-icon-css"
     href="./assets/demo2wpopal.b-cdn.net/freshio/wp-content/cache/min/1/freshio/wp-content/plugins/revslider/public/assets/fonts/font-awesome/css/font-awesome-aa247a6ef4d36ed857199452b09e9f0d.css"
     media="all" />
