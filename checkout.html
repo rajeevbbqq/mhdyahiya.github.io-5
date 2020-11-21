@@ -970,35 +970,27 @@
 
 			methods: {
 				placeOrder() {
-					// var data = {
-					//     "productId": this.cartProduct[0].id,
-					//     "productQty": this.cartProduct[0].productCount,
-					//     "customerName": this.billing.first_name + ' ' + this.billing.last_name,
-					//     "customerEmail": this.billing.email,
-					//     "customerPhone": this.billing.phone,
-					//     "addressLine1": this.billing.address_1,
-					// 	"addressLine2": this.billing.address_2,
-					// 	"landmark": this.billing.landmark,
-					//     "city": this.billing.city,
-					//     "state": this.billing.state,
-					//     "pincode": this.billing.postcode
-					// };
+					var data = {
+					    "productId": this.cartProduct[0].id,
+					    "productQty": this.cartProduct[0].productCount,
+					    "customerName": this.billing.first_name + ' ' + this.billing.last_name,
+					    "customerEmail": this.billing.email,
+					    "customerPhone": this.billing.phone,
+					    "addressLine1": this.billing.address_1,
+						"addressLine2": this.billing.address_2,
+						"landmark": this.billing.landmark,
+					    "city": this.billing.city,
+					    "state": this.billing.state,
+					    "pincode": this.billing.postcode
+					};
 
-					// axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', data)
-					// .then((response) => {
-					// 	console.log(response);
-					// })
-					// .catch((error) => {
-					// 	console.log(error);
-					// 	this.apiError = error;
-					// });
-
-					axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
+					axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', data)
 					.then((response) => {
 						console.log(response);
 					})
 					.catch((error) => {
 						console.log(error);
+						this.apiError = error;
 					});
 				},
 
