@@ -1,10 +1,6 @@
 <!doctype html>
 <html lang="en-US" class="">
 
-<!-- Mirrored from demo2.pavothemes.com/freshio/cart/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Nov 2020 08:39:18 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -290,7 +286,8 @@
 		}
 	</style>
 	<script src="./assets/javascript/vue-2.6.12.js"></script>
-	<script src="./assets/javascript/axios.min.js"></script>
+	<!-- <script src="./assets/javascript/axios.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body
@@ -416,7 +413,6 @@
 									<div class="woocommerce">
 										<div class="woocommerce-notices-wrapper"></div>
 										<div class="woocommerce-notices-wrapper"></div>
-										<form name="checkout">
 											<div class="col2-set" id="customer_details">
 												<div class="col-1">
 													<div class="woocommerce-billing-fields">
@@ -428,7 +424,8 @@
 																	name&nbsp;<abbr class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_first_name"
+																		v-model="billing.first_name" class="input-text "
+																		name="billing_first_name"
 																		id="billing_first_name" placeholder="" value=""
 																		autocomplete="given-name"
 																		style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAfBJREFUWAntVk1OwkAUZkoDKza4Utm61iP0AqyIDXahN2BjwiHYGU+gizap4QDuegWN7lyCbMSlCQjU7yO0TOlAi6GwgJc0fT/fzPfmzet0crmD7HsFBAvQbrcrw+Gw5fu+AfOYvgylJ4TwCoVCs1ardYTruqfj8fgV5OUMSVVT93VdP9dAzpVvm5wJHZFbg2LQ2pEYOlZ/oiDvwNcsFoseY4PBwMCrhaeCJyKWZU37KOJcYdi27QdhcuuBIb073BvTNL8ln4NeeR6NRi/wxZKQcGurQs5oNhqLshzVTMBewW/LMU3TTNlO0ieTiStjYhUIyi6DAp0xbEdgTt+LE0aCKQw24U4llsCs4ZRJrYopB6RwqnpA1YQ5NGFZ1YQ41Z5S8IQQdP5laEBRJcD4Vj5DEsW2gE6s6g3d/YP/g+BDnT7GNi2qCjTwGd6riBzHaaCEd3Js01vwCPIbmWBRx1nwAN/1ov+/drgFWIlfKpVukyYihtgkXNp4mABK+1GtVr+SBhJDbBIubVw+Cd/TDgKO2DPiN3YUo6y/nDCNEIsqTKH1en2tcwA9FKEItyDi3aIh8Gl1sRrVnSDzNFDJT1bAy5xpOYGn5fP5JuL95ZjMIn1ya7j5dPGfv0A5eAnpZUY3n5jXcoec5J67D9q+VuAPM47D3XaSeL4AAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;"></span>
@@ -439,8 +436,9 @@
 																	name&nbsp;<abbr class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_last_name"
-																		id="billing_last_name" placeholder="" value=""
+																		v-model="billing.last_name" class="input-text "
+																		name="billing_last_name" id="billing_last_name"
+																		placeholder="" value=""
 																		autocomplete="family-name"></span></p>
 															<p class="form-row address-field validate-required form-row-wide"
 																id="billing_address_1_field" data-priority="50"><label
@@ -448,8 +446,8 @@
 																		class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_address_1"
-																		id="billing_address_1"
+																		v-model="billing.address_1" class="input-text "
+																		name="billing_address_1" id="billing_address_1"
 																		placeholder="Address line 1" value=""
 																		autocomplete="address-line1"
 																		data-placeholder="Address line 1"></span>
@@ -459,33 +457,34 @@
 																	for="billing_address_2"
 																	class="screen-reader-text">Address line</label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_address_2"
-																		id="billing_address_2"
+																		v-model="billing.address_2" class="input-text "
+																		name="billing_address_2" id="billing_address_2"
 																		placeholder="Address line 2" value=""
 																		autocomplete="address-line2"
 																		data-placeholder="Address line 2"></span>
 															</p>
-															<p class="form-row address-field form-row-wide"
-																id="billing_address_2_field" data-priority="60"><label
-																	for="billing_address_2"
+															<!-- <p class="form-row address-field form-row-wide"
+																id="billing_address_3_field" data-priority="60"><label
+																	for="billing_address_3"
 																	class="screen-reader-text">Address line 3&nbsp;<span
 																		class="optional">(optional)</span></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_address_2"
-																		id="billing_address_2"
+																		v-model="billing.address_3" class="input-text "
+																		name="billing_address_3" id="billing_address_3"
 																		placeholder="Address line 3 (optional)" value=""
 																		autocomplete="address-line2"
 																		data-placeholder="Address line 3 (optional)"></span>
-															</p>
+															</p> -->
 															<p class="form-row address-field validate-required form-row-wide"
-																id="billing_city_field" data-priority="70"
+																id="billing_landmark_field" data-priority="70"
 																data-o_class="form-row form-row-wide address-field validate-required">
-																<label for="billing_city" class="">Landmark&nbsp;<abbr
-																		class="required"
+																<label for="billing_landmark"
+																	class="">Landmark&nbsp;<abbr class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_city"
-																		id="billing_city" placeholder="" value=""
+																		v-model="billing.landmark" class="input-text "
+																		name="billing_landmark" id="billing_landmark"
+																		placeholder="" value=""
 																		autocomplete="address-level2"></span></p>
 															<p class="form-row address-field validate-required form-row-wide"
 																id="billing_city_field" data-priority="70"
@@ -494,8 +493,9 @@
 																	City&nbsp;<abbr class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_city"
-																		id="billing_city" placeholder="" value=""
+																		v-model="billing.city" class="input-text "
+																		name="billing_city" id="billing_city"
+																		placeholder="" value=""
 																		autocomplete="address-level2"></span></p>
 															<p class="form-row address-field validate-state form-row-wide"
 																id="billing_state_field" data-priority="80"
@@ -504,9 +504,9 @@
 																		class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " value="" placeholder=""
-																		name="billing_state" id="billing_state"
-																		autocomplete="address-level1"
+																		v-model="billing.state" class="input-text "
+																		value="" placeholder="" name="billing_state"
+																		id="billing_state" autocomplete="address-level1"
 																		data-input-classes=""></span></p>
 															<p class="form-row address-field validate-required validate-postcode form-row-wide"
 																id="billing_postcode_field" data-priority="90"
@@ -515,8 +515,9 @@
 																	class="">Pincode&nbsp;<abbr class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="text"
-																		class="input-text " name="billing_postcode"
-																		id="billing_postcode" placeholder="" value=""
+																		v-model="billing.postcode" class="input-text "
+																		name="billing_postcode" id="billing_postcode"
+																		placeholder="" value=""
 																		autocomplete="postal-code"></span></p>
 															<p class="form-row form-row-wide validate-required validate-phone"
 																id="billing_phone_field" data-priority="100"><label
@@ -524,8 +525,9 @@
 																		class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input type="tel"
-																		class="input-text " name="billing_phone"
-																		id="billing_phone" placeholder="" value=""
+																		v-model="billing.phone" class="input-text "
+																		name="billing_phone" id="billing_phone"
+																		placeholder="" value=""
 																		autocomplete="tel"></span></p>
 															<p class="form-row form-row-wide validate-required validate-email"
 																id="billing_email_field" data-priority="110"><label
@@ -533,19 +535,18 @@
 																	address&nbsp;<abbr class="required"
 																		title="required">*</abbr></label><span
 																	class="woocommerce-input-wrapper"><input
-																		type="email" class="input-text "
-																		name="billing_email" id="billing_email"
-																		placeholder="" value=""
+																		v-model="billing.email" type="email"
+																		class="input-text " name="billing_email"
+																		id="billing_email" placeholder="" value=""
 																		autocomplete="email username"></span></p>
 														</div>
 													</div>
 												</div>
-												<div class="col-2">
+												<!-- <div class="col-2">
 													<div class="woocommerce-shipping-fields">
 													</div>
 													<div class="woocommerce-additional-fields">
 														<h3>Additional information</h3>
-
 														<div class="woocommerce-additional-fields__field-wrapper">
 															<p class="form-row notes" id="order_comments_field"
 																data-priority=""><label for="order_comments"
@@ -558,7 +559,7 @@
 																		rows="2" cols="5"></textarea></span></p>
 														</div>
 													</div>
-												</div>
+												</div> -->
 											</div>
 											<div id="order_review" class="woocommerce-checkout-review-order">
 												<h3 id="order_review_heading">Your order</h3>
@@ -596,7 +597,7 @@
 																				class="woocommerce-Price-currencySymbol">₹</span>{{shippingChargePerQty}}</bdi></span>
 																</td>
 															</tr>
-															<tr >
+															<tr>
 																<th>Platform charge</th>
 																<td data-title="Subtotal"><span
 																		class="woocommerce-Price-amount amount"><bdi><span
@@ -626,13 +627,13 @@
 																	website.</p>
 															</div>
 														</div>
-														<button type="submit" class="button alt"
+														<button type="submit" class="button alt" @click="placeOrder()"
 															name="woocommerce_checkout_place_order" id="place_order"
 															value="Place order" data-value="Place order">Place order</button>
+															<p style="color: red;">{{apiError}}</p>
 													</div>
 												</div>
 											</div>
-										</form>
 									</div>
 								</div>
 							</article>
@@ -719,23 +720,33 @@
 																				data-element_type="widget"
 																				data-widget_type="social-icons.default">
 																				<div class="elementor-widget-container">
-																					<div class="elementor-social-icons-wrapper">
+																					<div
+																						class="elementor-social-icons-wrapper">
 																						<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-a2e5159"
-																						  href="https://www.facebook.com/myfoodmaniaofficial/" target="_blank">
-																						  <span class="elementor-screen-only">Facebook</span>
-																						  <i class="fab fa-facebook"></i>
+																							href="https://www.facebook.com/myfoodmaniaofficial/"
+																							target="_blank">
+																							<span
+																								class="elementor-screen-only">Facebook</span>
+																							<i
+																								class="fab fa-facebook"></i>
 																						</a>
 																						<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-dd02e67"
-																						  href="https://www.youtube.com/channel/UCepw-6nQ-m1ldEAHNtQ7vhQ" target="_blank">
-																						  <span class="elementor-screen-only">Youtube</span>
-																						  <i class="fab fa-youtube"></i>
+																							href="https://www.youtube.com/channel/UCepw-6nQ-m1ldEAHNtQ7vhQ"
+																							target="_blank">
+																							<span
+																								class="elementor-screen-only">Youtube</span>
+																							<i
+																								class="fab fa-youtube"></i>
 																						</a>
 																						<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-c3c1f10"
-																						  href="https://www.instagram.com/myfoodmaniaofficial/" target="_blank">
-																						  <span class="elementor-screen-only">Instagram</span>
-																						  <i class="fab fa-instagram"></i>
+																							href="https://www.instagram.com/myfoodmaniaofficial/"
+																							target="_blank">
+																							<span
+																								class="elementor-screen-only">Instagram</span>
+																							<i
+																								class="fab fa-instagram"></i>
 																						</a>
-																					  </div>
+																					</div>
 																				</div>
 																			</div>
 																		</div>
@@ -752,12 +763,12 @@
 																				data-widget_type="image.default">
 																				<div class="elementor-widget-container">
 																					<img width="348" height="26"
-                                                                                            src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20348%2026%22%3E%3C/svg%3E"
-                                                                                            data-src="https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/payment_1.png"
-                                                                                            class="lazyload attachment-full size-full"
-                                                                                            alt=""
-                                                                                            data-srcset="https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/payment_1.png 348w, https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/payment_1-300x22.png 300w"
-                                                                                            data-sizes="(max-width: 348px) 100vw, 348px" />
+																						src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20348%2026%22%3E%3C/svg%3E"
+																						data-src="https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/payment_1.png"
+																						class="lazyload attachment-full size-full"
+																						alt=""
+																						data-srcset="https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/payment_1.png 348w, https://demo2wpopal.b-cdn.net/freshio/wp-content/uploads/2020/08/payment_1-300x22.png 300w"
+																						data-sizes="(max-width: 348px) 100vw, 348px" />
 																				</div>
 																			</div>
 																		</div>
@@ -928,6 +939,7 @@
 		<div class="freshio-overlay"></div>
 	</div>
 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 		var app = new Vue({
 			el: '#app',
@@ -938,7 +950,9 @@
 				subTotal: 0,
 				checkoutAmount: 0,
 				shippingChargePerQty: 0,
-				platformChargePercent: 0
+				platformChargePercent: 0,
+				billing: {},
+				apiError: null
 			},
 
 			async created() {
@@ -957,6 +971,29 @@
 			},
 
 			methods: {
+				placeOrder() {
+					var data = {
+					    "productId": this.cartProduct[0].id,
+					    "productQty": this.cartProduct[0].productCount,
+					    "customerName": this.billing.first_name + ' ' + this.billing.last_name,
+					    "customerEmail": this.billing.email,
+					    "customerPhone": this.billing.phone,
+					    "addressLine1": this.billing.address_1,
+						"addressLine2": this.billing.address_2,
+						"landmark": this.billing.landmark,
+					    "city": this.billing.city,
+					    "state": this.billing.state,
+					    "pincode": this.billing.postcode
+					};
+
+					axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', data).then((response) => {
+						console.log(response);
+					}).catch((error) => {
+						console.log(error);
+						this.apiError = error;
+					});
+				},
+
 				counterChange() {
 					const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0);
 					this.subTotal = subtotal;

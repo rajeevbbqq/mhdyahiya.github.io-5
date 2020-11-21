@@ -1633,24 +1633,14 @@
       el: '#app',
 
       data: {
-        products: [
-                                {
-                                "id": "8d962b69-8e6c-4f5c-8e10-6f1b74475b1f",
-                                "productName": "Cocunut pickle",
-                                "sellingPrice": 99,
-                                "productImage": "https://foodmania-assets.s3.ap-south-1.amazonaws.com/62AC9BF7-7234-4112-BC85-10CB29797C6B-A204ACC1-699F-4B22-84CA-EB0B8559BC4A.jpg",
-                                "isSellable": true,
-                                "shippingChargePerQty": 50,
-                                "platformChargePercent": 2
-                                }
-                              ],
+        products: [],
         cartProduct: null,
         subTotal: 0,
         checkoutAmount: 0
       },
 
       async created() {
-        // await this.getProducts();
+        await this.getProducts();
         var retrievedObject = await localStorage.getItem('cartObject');
         this.cartProduct = JSON.parse(retrievedObject);
         this.counterChange();
