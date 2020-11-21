@@ -537,7 +537,8 @@
                                   data-id="f61fd36" data-element_type="widget" data-widget_type="text-editor.default">
                                   <div class="elementor-widget-container">
                                     <div class="elementor-text-editor elementor-clearfix">
-                                      Mission - To bring a change in the life's of the people suffering from hunger.<br/><br/>
+                                      Mission - To bring a change in the life's of the people suffering from
+                                      hunger.<br /><br />
                                       To fight against global hunger
                                     </div>
                                   </div>
@@ -549,8 +550,7 @@
                                     <div class="elementor-author-box">
                                       <div class="elementor-author-box__avatar">
                                         <img class="lazyload" src="./assets/images/anas.jpeg"
-                                          data-src="./assets/images/anas.jpeg"
-                                          alt="Anas SaidMohamed" />
+                                          data-src="./assets/images/anas.jpeg" alt="Anas SaidMohamed" />
                                       </div>
                                       <div class="elementor-author-box__text">
                                         <div>
@@ -758,11 +758,11 @@
                                                 <div class="product-block">
                                                   <div class="product-transition">
                                                     <div class="product-image">
-                                                      <img width="450" height="420" :src="product.image"
-                                                        :data-src="product.image"
+                                                      <img width="450" height="420" :src="product.productImage"
+                                                        :data-src="product.productImage"
                                                         class="lazyload attachment-shop_catalog size-shop_catalog"
                                                         alt="" />
-                                                      <span class="onsale" v-if="product.is_shippable">Sale!</span>
+                                                      <span class="onsale" v-if="product.isSellable">Sale!</span>
                                                     </div>
                                                     <span class="stock-label"
                                                       v-if="product.available_quantity === 0">Out Of Stock</span>
@@ -770,20 +770,21 @@
                                                       class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
                                                   </div>
                                                   <h3 class="woocommerce-loop-product__title">
-                                                    <a>{{product.name}}</a>
+                                                    <a>{{product.productName}}</a>
                                                   </h3>
-                                                  <span class="price"><del v-if="product.mrp !== '0'"><span
+                                                  <span class="price">
+                                                    <!-- <del v-if="product.sellingPrice !== '0'"><span
                                                         class="woocommerce-Price-amount amount"><bdi><span
                                                             class="woocommerce-Price-currencySymbol">₹
-                                                          </span>{{product.mrp}}</bdi></span></del>
+                                                          </span>{{product.sellingPrice}}</bdi></span></del> -->
                                                     <ins><span class="woocommerce-Price-amount amount"><bdi><span
                                                             class="woocommerce-Price-currencySymbol">₹
-                                                          </span>{{product.sellablePrice}}</bdi></span></ins></span>
-                                                  <a v-if="product.is_shippable" data-quantity="1"
+                                                          </span>{{product.sellingPrice}}</bdi></span></ins></span>
+                                                  <a v-if="product.isSellable" data-quantity="1"
                                                     @click="addToCart(product)" class="button product_type_simple"
                                                     data-product_id="284" data-product_sku="rustic-paper-pants-99936556"
                                                     rel="nofollow">Add to cart</a>
-                                                  <a v-if="!product.is_shippable">Not available</a>
+                                                  <a v-if="!product.isSellable">Not available</a>
                                                 </div>
                                               </li>
                                             </ul>
@@ -1122,15 +1123,14 @@
                                             </div>
                                             <div class="entry-header">
                                               <div class="entry-meta">
-                                                <span class="posted-on"><a
-                                                    href="https://youtu.be/NH4u1QZQA4o"
+                                                <span class="posted-on"><a href="https://youtu.be/NH4u1QZQA4o"
                                                     rel="bookmark"><time class="entry-date published"
                                                       datetime="2019-12-28T03:46:40+00:00">November 17,
                                                       2020</time></a></span>
                                               </div>
                                               <h3 class="entry-title">
-                                                <a href="https://youtu.be/NH4u1QZQA4o"
-                                                  rel="bookmark">Foodmania's mission #CEO #Anas Saidmohamed #foodmania</a>
+                                                <a href="https://youtu.be/NH4u1QZQA4o" rel="bookmark">Foodmania's
+                                                  mission #CEO #Anas Saidmohamed #foodmania</a>
                                               </h3>
                                             </div>
                                           </div>
@@ -1145,15 +1145,14 @@
                                             </div>
                                             <div class="entry-header">
                                               <div class="entry-meta">
-                                                <span class="posted-on"><a
-                                                    href="https://youtu.be/_7kqAapy_5c"
+                                                <span class="posted-on"><a href="https://youtu.be/_7kqAapy_5c"
                                                     rel="bookmark"><time class="entry-date published"
                                                       datetime="2019-12-10T03:22:40+00:00">November 17,
                                                       2020</time></a></span>
                                               </div>
                                               <h3 class="entry-title">
-                                                <a href="https://youtu.be/_7kqAapy_5c"
-                                                  rel="bookmark">#coconut pickle #foodmania</a>
+                                                <a href="https://youtu.be/_7kqAapy_5c" rel="bookmark">#coconut pickle
+                                                  #foodmania</a>
                                               </h3>
                                             </div>
                                           </div>
@@ -1439,7 +1438,8 @@
                                               <i class="fab fa-facebook"></i>
                                             </a>
                                             <a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-dd02e67"
-                                              href="https://www.youtube.com/channel/UCepw-6nQ-m1ldEAHNtQ7vhQ" target="_blank">
+                                              href="https://www.youtube.com/channel/UCepw-6nQ-m1ldEAHNtQ7vhQ"
+                                              target="_blank">
                                               <span class="elementor-screen-only">Youtube</span>
                                               <i class="fab fa-youtube"></i>
                                             </a>
@@ -1625,9 +1625,8 @@
     <div class="freshio-overlay"></div>
   </div>
 
-  <script type = "text/javascript" 
-         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-      </script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+  </script>
 
   <script>
     var app = new Vue({
@@ -1651,7 +1650,6 @@
         getProducts() {
           axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
             .then((response) => {
-              console.log(response.data.data);
               this.products = response.data.data;
             })
             .catch((error) => {
