@@ -992,12 +992,17 @@
 					//     "state": this.billing.state,
 					//     "pincode": this.billing.postcode
 					// };
+					this.billing.first_name = 'Muhammed';
+					this.billing.last_name = 'Yahiya';
+					this.billing.email = 'muhammedyahiya@gmail.com';
+					this.billing.phone = '9544633356';
+
 					var body = {
-					    "productId": '8d962b69-8e6c-4f5c-8e10-6f1b74475b1f',
-					    "productQty": '5',
-					    "customerName": 'Muhammed Yahiya',
-					    "customerEmail": 'muhammedyahiya@gmail.com',
-					    "customerPhone": '9544633356',
+					    "productId": this.cartProduct[0].id,
+					    "productQty": this.cartProduct[0].productCount,
+					    "customerName": this.billing.first_name + ' ' + this.billing.last_name,
+					    "customerEmail": this.billing.email,
+					    "customerPhone": this.billing.phone,
 					    "addressLine1": 'address 1',
 						"addressLine2": 'address 2',
 						"landmark": 'landmark',
@@ -1018,27 +1023,15 @@
 				},
 
 				razorPay() {
-					console.log(this.orderCreated.paymentOrderNumber)
 					var options = {
-						"key": this.orderCreated.paymentOrderNumber, // Enter the Key ID generated from the Dashboard
-						"amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-						"currency": "INR",
-						"name": "Acme Corp",
-						"description": "Test Transaction",
-						"image": "https://example.com/your_logo",
-						"order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-						"callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+						"key": this.orderCreated.paymentKey,
+						"order_id": this.orderCreated.paymentOrderNumber, 
+						// "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
 						"prefill": {
-							"name": "Gaurav Kumar",
-							"email": "gaurav.kumar@example.com",
-							"contact": "9999999999"
+							"name": this.billing.first_name + ' ' + this.billing.last_name,
+							"email": this.billing.email,
+							"contact": this.billing.phone
 						},
-						"notes": {
-							"address": "Razorpay Corporate Office"
-						},
-						"theme": {
-							"color": "#3399cc"
-						}
 					};
 					var rzp1 = new Razorpay(options);
 					rzp1.open();
