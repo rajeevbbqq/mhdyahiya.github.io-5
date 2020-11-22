@@ -963,7 +963,7 @@
 				} else {
 					var cartObject = await localStorage.getItem('cartObject');
 					this.cartProduct = JSON.parse(cartObject);
-					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty;
+					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
 					this.platformChargePercent = this.cartProduct[0].platformChargePercent;
 					this.checkoutObject = JSON.parse(checkoutObject);
 					this.counterChange();
