@@ -475,7 +475,6 @@
 																	for="quantity_5fb02fd86d11e">{{product.productName}}</label>
 																<input type="number" id="quantity_5fb02fd86d11e"
 																	class="input-text qty text" step="1" min="0"
-																	:max="product.available_quantity || 5"
 																	:name="product.productName" :value="product.productCount"
 																	v-model="product.productCount" title="Qty" size="4"
 																	placeholder="" inputmode="numeric"
@@ -862,7 +861,8 @@
 				counterChange() {
 					const subtotal = this.cartProduct ? this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0) : 0;
 					this.subTotal = subtotal;
-					this.checkoutAmount = subtotal + (this.shippingChargePerQty * this.cartProduct[0].productCount) + this.platformChargePercent;
+					this.checkoutAmount = subtotal + this.shippingChargePerQty + this.platformChargePercent;
+					this.shippingChargePerQty = this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
 				},
 
 				async checkoutButton() {
