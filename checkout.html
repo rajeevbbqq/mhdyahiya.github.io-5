@@ -1043,7 +1043,7 @@
 				},
 
 				counterChange() {
-					const subtotal = this.cartProduct ? this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0) : 0;
+					const subtotal = this.cartProduct ? this.cartProduct.reduce((cnt, o) => { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0) : 0;
 					this.subTotal = subtotal;
 					this.checkoutAmount = subtotal;
 				},
