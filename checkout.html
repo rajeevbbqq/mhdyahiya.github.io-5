@@ -996,8 +996,8 @@
 						console.log(response);
 					})
 					.catch((error) => {
-						console.log(error);
-						this.apiError = error;
+						console.log(error.data.data);
+						this.apiError = error.data.data;
 					});
 				},
 
