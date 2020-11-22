@@ -18,8 +18,9 @@
                     countDown: 5
                 },
 
-                created() {
-                    this.countDownTimer()
+                async created() {
+                    this.countDownTimer();
+					await localStorage.clear();
                 },
 
                 methods: {
