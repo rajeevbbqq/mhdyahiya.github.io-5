@@ -1007,7 +1007,7 @@
 					};
 
 					axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', body, headers)
-					.then((response) => {
+					.then(async (response) => {
 						console.log(response.data.data);
 						this.orderCreated = await response.data.data;
 						this.razorPay()
