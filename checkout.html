@@ -595,14 +595,14 @@
 																<th>Shipping charge</th>
 																<td data-title="Subtotal"><span
 																		class="woocommerce-Price-amount amount"><bdi><span
-																				class="woocommerce-Price-currencySymbol">₹</span>{{shippingChargePerQty}}</bdi></span>
+																				class="woocommerce-Price-currencySymbol">₹</span>{{orderCreated.shippingCharges}}</bdi></span>
 																</td>
 															</tr>
 															<tr v-if="orderPlaced">
 																<th>Platform charge</th>
 																<td data-title="Subtotal"><span
 																		class="woocommerce-Price-amount amount"><bdi><span
-																				class="woocommerce-Price-currencySymbol">₹</span>{{platformChargePercent}}</bdi></span>
+																				class="woocommerce-Price-currencySymbol">₹</span>{{orderCreated.platformCharges}}</bdi></span>
 																</td>
 															</tr>
 															<tr class="order-total" v-if="orderPlaced">
@@ -630,7 +630,7 @@
 														</div>
 														<button  v-if="orderPlaced" type="submit" class="button alt" @click="razorPay()"
 															name="woocommerce_checkout_place_order" id="place_order"
-															value="Place order" data-value="Place order">Place order</button>
+															value="Pay now" data-value="Pay now">Pay now</button>
 														<button v-else type="submit" class="button alt" @click="placeOrder()"
 															name="woocommerce_checkout_place_order" id="place_order"
 															value="Place order" data-value="Place order">Place order</button>
@@ -1020,6 +1020,7 @@
 						console.log(response.data.data);
 						this.orderCreated = await response.data.data;
 						this.orderPlaced = true;
+						this.checkoutAmount = this.orderCreated.productTotalPrice + this.orderCreated.shippingCharges + this.orderCreated.platformCharges;
 					})
 					.catch((error) => {
 						this.apiError = error.response.data.data;
