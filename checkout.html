@@ -993,11 +993,11 @@
 
 					axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', body, headers)
 					.then((response) => {
-						console.log(response);
+						console.log(response.data.data);
 					})
 					.catch((error) => {
-						console.log(error.data);
-						this.apiError = error.data;
+						console.log(error.response.data);
+						this.apiError = error.response.data;
 					});
 				},
 
