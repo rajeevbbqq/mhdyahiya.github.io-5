@@ -1044,6 +1044,7 @@
 							console.log(response.razorpay_payment_id);
 							console.log(response.razorpay_order_id);
 							console.log(response.razorpay_signature);
+							window.location.href = './payment-success.html';
 						},
 						"prefill": {
 							"name": this.billing.first_name + ' ' + this.billing.last_name,
