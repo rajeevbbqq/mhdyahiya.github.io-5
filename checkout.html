@@ -630,10 +630,16 @@
 														</div>
 														<button  v-if="orderPlaced" type="submit" class="button alt" @click="razorPay()"
 															name="woocommerce_checkout_place_order" id="place_order"
-															value="Pay now" data-value="Pay now">Pay now</button>
+															value="Pay now" data-value="Pay now" :disabled="apiLoader">
+															<span v-if="apiLoader">Loading...</span>
+															<span v-else>Pay now</span>
+														</button>
 														<button v-else type="submit" class="button alt" @click="placeOrder()"
 															name="woocommerce_checkout_place_order" id="place_order"
-															value="Place order" data-value="Place order">Place order</button>
+															value="Place order" data-value="Place order" :disabled="apiLoader">
+															<span v-if="apiLoader">Loading...</span>
+															<span v-else>Place order</span>
+														</button>
 														<p style="color: red;">{{apiError}}</p>
 													</div>
 												</div>
@@ -957,6 +963,7 @@
 				apiError: null,
 				orderCreated: null,
 				orderPlaced: false,
+				apiLoader: false
 			},
 
 			async created() {
@@ -967,8 +974,6 @@
 				} else {
 					var cartObject = await localStorage.getItem('cartObject');
 					this.cartProduct = JSON.parse(cartObject);
-					// this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
-					// this.platformChargePercent = this.cartProduct[0].platformChargePercent;
 					this.checkoutObject = JSON.parse(checkoutObject);
 					this.counterChange();
 				}
@@ -976,6 +981,8 @@
 
 			methods: {
 				async placeOrder() {
+					this.apiLoader = true;
+
 					const headers = {
 						header:{
 							"Content-Type": "application/json",
@@ -1021,9 +1028,11 @@
 						this.orderCreated = await response.data.data;
 						this.orderPlaced = true;
 						this.checkoutAmount = this.orderCreated.productTotalPrice + this.orderCreated.shippingCharges + this.orderCreated.platformCharges;
+						this.apiLoader = false;
 					})
 					.catch((error) => {
 						this.apiError = error.response.data.data;
+						this.apiLoader = false;
 					});
 				},
 
