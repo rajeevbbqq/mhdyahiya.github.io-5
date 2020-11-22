@@ -1026,7 +1026,11 @@
 					var options = {
 						"key": this.orderCreated.paymentKey,
 						"order_id": this.orderCreated.paymentOrderNumber, 
-						// "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+						"handler": (response) => {
+							alert(response.razorpay_payment_id);
+							alert(response.razorpay_order_id);
+							alert(response.razorpay_signature)
+						},
 						"prefill": {
 							"name": this.billing.first_name + ' ' + this.billing.last_name,
 							"email": this.billing.email,
