@@ -331,7 +331,7 @@
 										</li>
 										<li id="menu-item-89"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-											<a href="./contact-us.html"><span class="menu-title">Contact</span></a>
+											<a href="./contact-us.html"><span class="menu-title">Contact us</span></a>
 										</li>
 									</ul>
 								</div>
@@ -372,7 +372,7 @@
 									</li>
 									<li id="menu-item-89"
 										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-										<a href="./contact-us.html"><span class="menu-title">Contact</span></a>
+										<a href="./contact-us.html"><span class="menu-title">Contact us</span></a>
 									</li>
 								</ul>
 							</div>
@@ -758,7 +758,7 @@
 																							class="elementor-icon-list-item">
 																							<a href="./contact-us.html">
 																								<span
-																									class="elementor-icon-list-text">Contact</span>
+																									class="elementor-icon-list-text">Contact us</span>
 																							</a>
 																						</li>
 																					</ul>
@@ -822,7 +822,7 @@
 							<a href="./about-us.html">About us</a>
 						</li>
 						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-							<a href="./contact-us.html">Contact</a>
+							<a href="./contact-us.html">Contact us</a>
 						</li>
 					</ul>
 				</div>
@@ -860,7 +860,7 @@
 				},
 
 				counterChange() {
-					const subtotal = this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0);
+					const subtotal = this.cartProduct ? this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0) : 0;
 					this.subTotal = subtotal;
 					this.checkoutAmount = subtotal + this.shippingChargePerQty + this.platformChargePercent;
 				},
