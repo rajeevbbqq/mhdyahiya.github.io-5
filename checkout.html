@@ -591,28 +591,28 @@
 																				class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject && checkoutObject.subTotal}}</bdi></span>
 																</td>
 															</tr> -->
-															<tr>
+															<tr v-if="orderPlaced">
 																<th>Shipping charge</th>
 																<td data-title="Subtotal"><span
 																		class="woocommerce-Price-amount amount"><bdi><span
 																				class="woocommerce-Price-currencySymbol">₹</span>{{shippingChargePerQty}}</bdi></span>
 																</td>
 															</tr>
-															<tr>
+															<tr v-if="orderPlaced">
 																<th>Platform charge</th>
 																<td data-title="Subtotal"><span
 																		class="woocommerce-Price-amount amount"><bdi><span
 																				class="woocommerce-Price-currencySymbol">₹</span>{{platformChargePercent}}</bdi></span>
 																</td>
 															</tr>
-															<tr class="order-total">
+															<tr class="order-total" v-if="orderPlaced">
 																<th>Total</th>
 																<td>
 																	<strong>
 																		<span
 																			class="woocommerce-Price-amount amount"><bdi>
 																				<span
-																					class="woocommerce-Price-currencySymbol">₹</span>{{checkoutObject && checkoutObject.checkoutAmount}}</bdi></span>
+																					class="woocommerce-Price-currencySymbol">₹</span>{{checkoutAmount}}</bdi></span>
 																	</strong>
 																</td>
 															</tr>
@@ -628,10 +628,13 @@
 																	website.</p>
 															</div>
 														</div>
-														<button type="submit" class="button alt" @click="placeOrder()"
+														<button  v-if="orderPlaced" type="submit" class="button alt" @click="razorPay()"
 															name="woocommerce_checkout_place_order" id="place_order"
 															value="Place order" data-value="Place order">Place order</button>
-															<p style="color: red;">{{apiError}}</p>
+														<button v-else type="submit" class="button alt" @click="placeOrder()"
+															name="woocommerce_checkout_place_order" id="place_order"
+															value="Place order" data-value="Place order">Place order</button>
+														<p style="color: red;">{{apiError}}</p>
 													</div>
 												</div>
 											</div>
@@ -952,7 +955,8 @@
 				platformChargePercent: 0,
 				billing: {},
 				apiError: null,
-				orderCreated: null
+				orderCreated: null,
+				orderPlaced: false,
 			},
 
 			async created() {
@@ -963,8 +967,8 @@
 				} else {
 					var cartObject = await localStorage.getItem('cartObject');
 					this.cartProduct = JSON.parse(cartObject);
-					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
-					this.platformChargePercent = this.cartProduct[0].platformChargePercent;
+					// this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
+					// this.platformChargePercent = this.cartProduct[0].platformChargePercent;
 					this.checkoutObject = JSON.parse(checkoutObject);
 					this.counterChange();
 				}
@@ -1015,7 +1019,7 @@
 					.then(async (response) => {
 						console.log(response.data.data);
 						this.orderCreated = await response.data.data;
-						this.razorPay()
+						this.orderPlaced = true;
 					})
 					.catch((error) => {
 						this.apiError = error.response.data.data;

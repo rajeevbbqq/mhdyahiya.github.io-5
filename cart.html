@@ -502,7 +502,7 @@
 																			class="woocommerce-Price-currencySymbol">₹</span>{{subTotal}}</bdi></span>
 															</td>
 														</tr>
-														<tr>
+														<!-- <tr>
 															<th>Shipping charge</th>
 															<td data-title="Subtotal"><span
 																	class="woocommerce-Price-amount amount"><bdi><span
@@ -515,7 +515,7 @@
 																	class="woocommerce-Price-amount amount"><bdi><span
 																			class="woocommerce-Price-currencySymbol">₹</span>{{platformChargePercent}}</bdi></span>
 															</td>
-														</tr>
+														</tr> -->
 														<tr class="order-total">
 															<th>Total</th>
 															<td data-title="Total"><strong><span
@@ -861,7 +861,7 @@
 				counterChange() {
 					const subtotal = this.cartProduct ? this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0) : 0;
 					this.subTotal = subtotal;
-					this.checkoutAmount = subtotal + this.shippingChargePerQty + this.platformChargePercent;
+					this.checkoutAmount = subtotal;// + this.shippingChargePerQty + this.platformChargePercent;
 					this.shippingChargePerQty = this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
 				},
 
