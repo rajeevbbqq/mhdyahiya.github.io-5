@@ -863,7 +863,7 @@
 				getProducts() {
 					axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
 						.then(async (response) => {
-							this.addToCart(await response.data.data[o]);
+							this.addToCart(await response.data.data[0]);
 						})
 						.catch((error) => {
 							console.log(error);
