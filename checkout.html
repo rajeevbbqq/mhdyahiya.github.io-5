@@ -1018,7 +1018,7 @@
 
 					axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', body, headers)
 					.then(async (response) => {
-						console.log(response.data.data);
+						// console.log(response.data.data);
 						this.orderCreated = await response.data.data;
 						this.orderPlaced = true;
 						this.checkoutAmount = this.orderCreated.productTotalPrice + this.orderCreated.shippingCharges + this.orderCreated.platformCharges;
@@ -1035,9 +1035,9 @@
 						"key": this.orderCreated.paymentKey,
 						"order_id": this.orderCreated.paymentOrderNumber, 
 						"handler": (response) => {
-							console.log(response.razorpay_payment_id);
-							console.log(response.razorpay_order_id);
-							console.log(response.razorpay_signature);
+							// console.log(response.razorpay_payment_id);
+							// console.log(response.razorpay_order_id);
+							// console.log(response.razorpay_signature);
 							window.location.href = './payment-success.html';
 						},
 						"prefill": {
