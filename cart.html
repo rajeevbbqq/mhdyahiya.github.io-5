@@ -844,7 +844,7 @@
 
 			async created() {
 				if (window.location.search) {
-					this.directURL();
+					this.getProducts();
 				} else {
 					var retrievedObject = await localStorage.getItem('cartObject');
 					this.cartProduct = await JSON.parse(retrievedObject);
@@ -855,20 +855,16 @@
 			},
 
 			methods: {
-				async directURL() {
-					if (window.location.search === '?cartItems=true') {
-						this.getProducts();
-					}
-				},
-
 				getProducts() {
-					axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
-						.then(async (response) => {
-							this.addToCart(await response.data.data[0]);
-						})
-						.catch((error) => {
-							console.log(error);
-						});
+					if (window.location.search === '?cartItems=true') {
+						axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
+							.then(async (response) => {
+								this.addToCart(await response.data.data[0]);
+							})
+							.catch((error) => {
+								console.log(error);
+							});
+					}
 				},
 
 				async addToCart(product) {
