@@ -843,6 +843,9 @@
 			},
 
 			async created() {
+				if (window.location.search) {
+					this.directURL();
+				}
 				var retrievedObject = await localStorage.getItem('cartObject');
 				this.cartProduct = await JSON.parse(retrievedObject);
 				this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
@@ -851,6 +854,27 @@
 			},
 
 			methods: {
+				async directURL() {
+					if (window.location.search === '?cartItems=true') {
+						this.getProducts();
+					}
+				},
+
+				getProducts() {
+					axios.get('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/products')
+						.then(async (response) => {
+							this.addToCart(await response.data.data[o]);
+						})
+						.catch((error) => {
+							console.log(error);
+						});
+				},
+
+				async addToCart(product) {
+					product.productCount = 1;
+					await localStorage.setItem('cartObject', JSON.stringify([product]));
+				},
+
 				async removeItem(product) {
 					this.cartProduct = null;
 					this.subTotal = 0;
