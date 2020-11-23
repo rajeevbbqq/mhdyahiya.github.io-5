@@ -845,12 +845,13 @@
 			async created() {
 				if (window.location.search) {
 					this.directURL();
+				} else {
+					var retrievedObject = await localStorage.getItem('cartObject');
+					this.cartProduct = await JSON.parse(retrievedObject);
+					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
+					this.platformChargePercent = this.cartProduct[0].platformChargePercent;
+					this.counterChange();
 				}
-				var retrievedObject = await localStorage.getItem('cartObject');
-				this.cartProduct = await JSON.parse(retrievedObject);
-				this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
-				this.platformChargePercent = this.cartProduct[0].platformChargePercent;
-				this.counterChange();
 			},
 
 			methods: {
@@ -873,6 +874,11 @@
 				async addToCart(product) {
 					product.productCount = 1;
 					await localStorage.setItem('cartObject', JSON.stringify([product]));
+					var retrievedObject = await localStorage.getItem('cartObject');
+					this.cartProduct = await JSON.parse(retrievedObject);
+					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
+					this.platformChargePercent = this.cartProduct[0].platformChargePercent;
+					this.counterChange();
 				},
 
 				async removeItem(product) {
