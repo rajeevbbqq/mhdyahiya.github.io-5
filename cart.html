@@ -842,7 +842,7 @@
 				platformChargePercent: 0
 			},
 
-			async mounted() {
+			async created() {
 				if (window.location.search) {
 					this.getProducts();
 				} else {
@@ -853,18 +853,6 @@
 					this.counterChange();
 				}
 			},
-
-			// async created() {
-			// 	if (window.location.search) {
-			// 		this.getProducts();
-			// 	} else {
-			// 		var retrievedObject = await localStorage.getItem('cartObject');
-			// 		this.cartProduct = await JSON.parse(retrievedObject);
-			// 		this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
-			// 		this.platformChargePercent = this.cartProduct[0].platformChargePercent;
-			// 		this.counterChange();
-			// 	}
-			// },
 
 			methods: {
 				getProducts() {
