@@ -628,12 +628,19 @@
 																	website.</p>
 															</div>
 														</div>
-														<button  v-if="orderPlaced" type="submit" class="button alt" @click="razorPay()"
-															name="woocommerce_checkout_place_order" id="place_order"
-															value="Pay now" data-value="Pay now" :disabled="apiLoader">
-															<span v-if="apiLoader">Loading...</span>
-															<span v-else>Pay now</span>
-														</button>
+														<div v-if="!orderPlaced">
+															<button type="submit" class="button alt" @click="razorPay()"
+																name="woocommerce_checkout_place_order" id="place_order"
+																value="Pay now" data-value="Pay now" :disabled="apiLoader">
+																<span v-if="apiLoader">Loading...</span>
+																<span v-else>Pay now</span>
+															</button>
+															<button type="submit" class="button cancel" @click="cancelOrder()"
+																name="woocommerce_checkout_cancel_order" id="cancelOrder"
+																value="Cancel" data-value="Cancel" style="margin-top: 5px; background-color: lightgrey;">
+																<span>Cancel</span>
+															</button>
+														</div>
 														<button v-else type="submit" class="button alt" @click="placeOrder()"
 															name="woocommerce_checkout_place_order" id="place_order"
 															value="Place order" data-value="Place order" :disabled="apiLoader">
@@ -980,6 +987,10 @@
 			},
 
 			methods: {
+				cancelOrder() {
+					this.orderPlaced = !this.orderPlaced;
+				},
+
 				async placeOrder() {
 					this.apiLoader = true;
 
