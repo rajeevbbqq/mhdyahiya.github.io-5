@@ -1016,7 +1016,7 @@
 					    "pincode": this.billing.postcode
 					};
 
-					axios.post('https://r5br8jymk4.execute-api.us-east-1.amazonaws.com/api/orders/create', body, headers)
+					axios.post('https://dyxm2n4fh2.execute-api.ap-south-1.amazonaws.com/api/orders/create', body, headers)
 					.then(async (response) => {
 						// console.log(response.data.data);
 						this.orderCreated = await response.data.data;
