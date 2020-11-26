@@ -884,7 +884,7 @@
 
 			methods: {
 				getProducts() {
-					if (window.location.search === '?cartItems=true') {
+					if (window.location.search.includes("?cartItems=true")) {
 						axios.get('https://dyxm2n4fh2.execute-api.ap-south-1.amazonaws.com/api/products')
 							.then(async (response) => {
 								this.addToCart(await response.data.data[0]);
