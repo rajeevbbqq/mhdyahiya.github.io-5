@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Foodmania, an innovative food company to bring an impact on the lives. ... Later in 2019, Foodmania collaborated with ID Fresh to manufacture the unique & innovative grated coconut inside the ... 7/466, mafana building, dam road, walayar,"/>
+  <meta name="keywords" content="foodmania, walayar, palakkad, kerala, wallayar, wallayaar, india, innovative food company, innovative and unique foodmania, unique, innovative, id, id fresh, foodmania collaborated with id fresh, id fresh collaborated with foodmania"/>
+  <meta name="robots" content="index, follow"/>
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <title>Foodmania</title>
   <link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
@@ -476,7 +479,7 @@
                                   data-id="f61fd36" data-element_type="widget" data-widget_type="text-editor.default">
                                   <div class="elementor-widget-container">
                                     <div class="elementor-text-editor elementor-clearfix">
-                                      Mission - To bring a change in the life's of the people suffering from
+                                      Mission - To bring a change in the lives of the people suffering from
                                       hunger.<br /><br />
                                       To fight against global hunger
                                     </div>
@@ -534,7 +537,7 @@
                                           <span>Pick a starter option</span>
                                         </h3>
                                         <p class="elementor-icon-box-description">
-                                          Choose from select produce to start.
+                                          Choose from products to start.
                                           Keep, add, or remove items.
                                         </p>
                                       </div>
@@ -714,9 +717,16 @@
                                                         class="woocommerce-Price-amount amount"><bdi><span
                                                             class="woocommerce-Price-currencySymbol">₹
                                                           </span>{{product.sellingPrice}}</bdi></span></del> -->
-                                                    <ins><span class="woocommerce-Price-amount amount"><bdi><span
-                                                            class="woocommerce-Price-currencySymbol">₹
-                                                          </span>{{product.sellingPrice}}</bdi></span></ins></span>
+                                                    <ins>
+                                                      <span class="woocommerce-Price-amount amount">
+                                                        <bdi>
+                                                          <span class="woocommerce-Price-currencySymbol">₹</span>
+                                                          {{product.sellingPrice}}
+                                                        </bdi>
+                                                      </span>
+                                                    </ins>
+                                                    <span> (Inc of all taxes)</span>
+                                                  </span>
                                                   <a v-if="product.isSellable" data-quantity="1"
                                                     @click="addToCart(product)" class="button product_type_simple"
                                                     data-product_id="284" data-product_sku="rustic-paper-pants-99936556"
