@@ -717,9 +717,16 @@
                                                         class="woocommerce-Price-amount amount"><bdi><span
                                                             class="woocommerce-Price-currencySymbol">₹
                                                           </span>{{product.sellingPrice}}</bdi></span></del> -->
-                                                    <ins><span class="woocommerce-Price-amount amount"><bdi><span
-                                                            class="woocommerce-Price-currencySymbol">₹
-                                                          </span>{{product.sellingPrice}}</bdi></span></ins></span>
+                                                    <ins>
+                                                      <span class="woocommerce-Price-amount amount">
+                                                        <bdi>
+                                                          <span class="woocommerce-Price-currencySymbol">₹</span>
+                                                          {{product.sellingPrice}}
+                                                        </bdi>
+                                                      </span>
+                                                    </ins>
+                                                    <span> (Inc of all taxes)</span>
+                                                  </span>
                                                   <a v-if="product.isSellable" data-quantity="1"
                                                     @click="addToCart(product)" class="button product_type_simple"
                                                     data-product_id="284" data-product_sku="rustic-paper-pants-99936556"
