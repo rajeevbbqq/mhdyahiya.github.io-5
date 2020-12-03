@@ -879,8 +879,10 @@
 				} else {
 					var retrievedObject = await localStorage.getItem('cartObject');
 					this.cartProduct = await JSON.parse(retrievedObject);
-					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
-					this.platformChargePercent = this.cartProduct[0].platformChargePercent;
+					if (this.cartProduct) {
+						this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
+						this.platformChargePercent = this.cartProduct[0].platformChargePercent;
+					}
 					this.counterChange();
 				}
 			},
