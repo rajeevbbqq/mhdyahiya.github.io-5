@@ -892,7 +892,7 @@
 							.then(async (response) => {
 								var array = await response.data.data;
 								var result = array.find(x => x.id === '8d962b69-8e6c-4f5c-8e10-6f1b74475b1f');
-								this.addToCart(result);
+								this.addToCart([result]);
 							})
 							.catch((error) => {
 								console.log(error);
