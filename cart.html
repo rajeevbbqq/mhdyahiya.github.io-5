@@ -890,7 +890,9 @@
 					if (window.location.search.includes("?cartItems=true")) {
 						axios.get('https://dyxm2n4fh2.execute-api.ap-south-1.amazonaws.com/api/products')
 							.then(async (response) => {
-								this.addToCart(await response.data.data[0]);
+								var array = await response.data.data;
+								var result = array.find(x => x.id === '8d962b69-8e6c-4f5c-8e10-6f1b74475b1f');
+								this.addToCart(result);
 							})
 							.catch((error) => {
 								console.log(error);
