@@ -907,8 +907,10 @@
 					await localStorage.setItem('cartObject', JSON.stringify([product]));
 					var retrievedObject = await localStorage.getItem('cartObject');
 					this.cartProduct = await JSON.parse(retrievedObject);
-					this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
-					this.platformChargePercent = this.cartProduct[0].platformChargePercent;
+					if (this.cartProduct) {
+						this.shippingChargePerQty = await this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
+						this.platformChargePercent = this.cartProduct[0].platformChargePercent;
+					}
 					this.counterChange();
 				},
 
@@ -923,7 +925,9 @@
 					const subtotal = this.cartProduct ? this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0) : 0;
 					this.subTotal = subtotal;
 					this.checkoutAmount = subtotal;// + this.shippingChargePerQty + this.platformChargePercent;
-					this.shippingChargePerQty = this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
+					if (this.cartProduct) {
+						this.shippingChargePerQty = this.cartProduct[0].shippingChargePerQty * this.cartProduct[0].productCount;
+					}
 				},
 
 				async checkoutButton() {
