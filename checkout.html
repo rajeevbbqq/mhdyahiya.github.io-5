@@ -1068,7 +1068,7 @@
 							// console.log(response.razorpay_payment_id);
 							// console.log(response.razorpay_order_id);
 							// console.log(response.razorpay_signature);
-							window.location.href = './payment-success.html';
+							this.validatePayment(response.razorpay_payment_id);
 						},
 						"prefill": {
 							"name": this.billing.first_name + ' ' + this.billing.last_name,
@@ -1078,6 +1078,33 @@
 					};
 					var rzp1 = new Razorpay(options);
 					rzp1.open();
+				},
+
+				validatePayment(razorpay_payment_id) {
+					this.apiLoader = true;
+
+					const headers = {
+						header:{
+							"Content-Type": "application/json",
+							"Access-Control-Allow-Origin": "*"
+						}
+					};
+
+					var body = {
+						"orderId": this.orderCreated.orderId,
+    					"paymentId": razorpay_payment_id
+					};
+
+					axios.post('https://dyxm2n4fh2.execute-api.ap-south-1.amazonaws.com/api/orders/validate-payment', body, headers)
+					.then(async (response) => {
+						// console.log(response.data.data);
+						this.apiLoader = false;
+						window.location.href = './payment-success.html';
+					})
+					.catch((error) => {
+						this.apiError = error.response.data.data;
+						this.apiLoader = false;
+					});
 				},
 
 				counterChange() {
