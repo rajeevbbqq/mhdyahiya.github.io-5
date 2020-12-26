@@ -449,14 +449,14 @@
 													<h3>Billing details</h3>
 													<div class="woocommerce-billing-fields__field-wrapper">
 														<p class="form-row customer-name-field validate-required form-row-wide"
-															id="billing_customer_name_field" data-priority="10"><label
-																for="billing_customer_name" class="">Customer
+															id="billing_customerName_field" data-priority="10"><label
+																for="billing_customerName" class="">Customer
 																name&nbsp;<abbr class="required"
 																	title="required">*</abbr></label><span
 																class="woocommerce-input-wrapper"><input type="text"
-																	v-model="billing.customer_name" class="input-text "
-																	name="billing_customer_name"
-																	id="billing_customer_name" placeholder="" value=""
+																	v-model="billing.customerName" class="input-text "
+																	name="billing_customerName"
+																	id="billing_customerName" placeholder="" value=""
 																	autocomplete="given-name" :disabled="orderPlaced"
 																	style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAfBJREFUWAntVk1OwkAUZkoDKza4Utm61iP0AqyIDXahN2BjwiHYGU+gizap4QDuegWN7lyCbMSlCQjU7yO0TOlAi6GwgJc0fT/fzPfmzet0crmD7HsFBAvQbrcrw+Gw5fu+AfOYvgylJ4TwCoVCs1ardYTruqfj8fgV5OUMSVVT93VdP9dAzpVvm5wJHZFbg2LQ2pEYOlZ/oiDvwNcsFoseY4PBwMCrhaeCJyKWZU37KOJcYdi27QdhcuuBIb073BvTNL8ln4NeeR6NRi/wxZKQcGurQs5oNhqLshzVTMBewW/LMU3TTNlO0ieTiStjYhUIyi6DAp0xbEdgTt+LE0aCKQw24U4llsCs4ZRJrYopB6RwqnpA1YQ5NGFZ1YQ41Z5S8IQQdP5laEBRJcD4Vj5DEsW2gE6s6g3d/YP/g+BDnT7GNi2qCjTwGd6riBzHaaCEd3Js01vwCPIbmWBRx1nwAN/1ov+/drgFWIlfKpVukyYihtgkXNp4mABK+1GtVr+SBhJDbBIubVw+Cd/TDgKO2DPiN3YUo6y/nDCNEIsqTKH1en2tcwA9FKEItyDi3aIh8Gl1sRrVnSDzNFDJT1bAy5xpOYGn5fP5JuL95ZjMIn1ya7j5dPGfv0A5eAnpZUY3n5jXcoec5J67D9q+VuAPM47D3XaSeL4AAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;"></span>
 														</p>
@@ -1108,7 +1108,7 @@
 							this.validatePayment(response.razorpay_payment_id);
 						},
 						"prefill": {
-							"name": this.billing.customer_name,
+							"name": this.billing.customerName,
 							"email": this.billing.email,
 							"contact": this.billing.phone
 						},
