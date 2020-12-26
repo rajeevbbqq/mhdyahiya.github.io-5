@@ -496,7 +496,7 @@
 																		autocomplete="address-line2"
 																		data-placeholder="Address line 3 (optional)" :disabled="orderPlaced"></span>
 															</p> -->
-														<p class="form-row address-field validate-required form-row-wide"
+														<!-- <p class="form-row address-field validate-required form-row-wide"
 															id="billing_landmark_field" data-priority="70"
 															data-o_class="form-row form-row-wide address-field validate-required">
 															<label for="billing_landmark" class="">Landmark&nbsp;<abbr
@@ -508,7 +508,7 @@
 																	placeholder="" value=""
 																	autocomplete="address-level2"
 																	:disabled="orderPlaced"></span>
-														</p>
+														</p> -->
 														<p class="form-row address-field validate-required form-row-wide"
 															id="billing_district_field" data-priority="70"
 															data-o_class="form-row form-row-wide address-field validate-required">
@@ -1077,7 +1077,6 @@
 						"customerPhone": this.billing.phone,
 						"addressLine1": this.billing.address_1,
 						"addressLine2": ',',
-						"landmark": this.billing.landmark,
 						"district": this.billing.district,
 						"state": this.billing.state,
 						"pincode": this.billing.postcode
