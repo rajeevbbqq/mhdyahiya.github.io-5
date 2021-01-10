@@ -8,9 +8,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<meta name="description" content="Foodmania, an innovative food company to bring an impact on the lives. ... Later in 2019, Foodmania collaborated with ID Fresh to manufacture the unique & innovative grated coconut inside the ... 7/466, mafana building, dam road, walayar,"/>
-    <meta name="keywords" content="foodmania, walayar, palakkad, kerala, wallayar, wallayaar, india, innovative food company, innovative and unique foodmania, unique, innovative, id, id fresh, foodmania collaborated with id fresh, id fresh collaborated with foodmania"/>
-	<meta name="robots" content="cart, follow"/>
+	<meta name="description"
+		content="Foodmania, an innovative food company to bring an impact on the lives. ... Later in 2019, Foodmania collaborated with ID Fresh to manufacture the unique & innovative grated coconut inside the ... 7/466, mafana building, dam road, walayar," />
+	<meta name="keywords"
+		content="foodmania, walayar, palakkad, kerala, wallayar, wallayaar, india, innovative food company, innovative and unique foodmania, unique, innovative, id, id fresh, foodmania collaborated with id fresh, id fresh collaborated with foodmania" />
+	<meta name="robots" content="cart, follow" />
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<script>document.documentElement.className = document.documentElement.className + ' yes-js js_active js'</script>
 	<title>Cart - Foodmania</title>
@@ -336,12 +338,18 @@
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
 											<a href="./contact-us.html"><span class="menu-title">Contact us</span></a>
 										</li>
-                                        <li id="menu-item-89" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-                                          <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span class="menu-title">Refund policy</span></a>
-                                        </li>
-                                        <li id="menu-item-89" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-                                          <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span class="menu-title">Privacy policy</span></a>
-                                        </li>
+										<li id="menu-item-89"
+											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+											<a
+												href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span
+													class="menu-title">Refund policy</span></a>
+										</li>
+										<li id="menu-item-89"
+											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+											<a
+												href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span
+													class="menu-title">Privacy policy</span></a>
+										</li>
 									</ul>
 								</div>
 							</nav>
@@ -383,12 +391,18 @@
 										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
 										<a href="./contact-us.html"><span class="menu-title">Contact us</span></a>
 									</li>
-                                    <li id="menu-item-89" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-                                      <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span class="menu-title">Refund policy</span></a>
-                                    </li>
-                                    <li id="menu-item-89" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-                                      <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span class="menu-title">Privacy policy</span></a>
-                                    </li>
+									<li id="menu-item-89"
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+										<a
+											href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span
+												class="menu-title">Refund policy</span></a>
+									</li>
+									<li id="menu-item-89"
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+										<a
+											href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf"><span
+												class="menu-title">Privacy policy</span></a>
+									</li>
 								</ul>
 							</div>
 						</nav>
@@ -472,14 +486,17 @@
 													<tr class="woocommerce-cart-form__cart-item cart_item"
 														v-for="product in cartProduct">
 														<td class="product-remove">
-															<a @click="removeItem(product)" class="remove" style="cursor: pointer;">×</a>
+															<a @click="removeItem(product)" class="remove"
+																style="cursor: pointer;">×</a>
 														</td>
 														<td class="product-thumbnail">
 															<a><img width="450" height="420" :src="product.productImage"
 																	class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-																	alt=""></a> </td>
+																	alt=""></a>
+														</td>
 														<td class="product-name" data-title="Product">
-															<a>{{product.productName}}</a> </td>
+															<a>{{product.productName}}</a>
+														</td>
 														<td class="product-price" data-title="Price">
 															<span class="woocommerce-Price-amount amount"><bdi><span
 																		class="woocommerce-Price-currencySymbol">₹</span>{{product.sellingPrice}}</bdi></span>
@@ -489,8 +506,9 @@
 																<label class="screen-reader-text"
 																	for="quantity_5fb02fd86d11e">{{product.productName}}</label>
 																<input type="number" id="quantity_5fb02fd86d11e"
-																	class="input-text qty text" step="1" min="1" max="5"
-																	:name="product.productName" :value="product.productCount"
+																	class="input-text qty text" step="1" min="1"
+																	:max="maxQuantity" :name="product.productName"
+																	:value="product.productCount"
 																	v-model="product.productCount" title="Qty" size="4"
 																	placeholder="" inputmode="numeric"
 																	@change="counterChange()" />
@@ -499,7 +517,8 @@
 														<td class="product-subtotal" data-title="Subtotal">
 															<span class="woocommerce-Price-amount amount"><bdi>
 																	<span
-																		class="woocommerce-Price-currencySymbol">₹</span>{{product.productCount * product.sellingPrice}}</bdi></span>
+																		class="woocommerce-Price-currencySymbol">₹</span>{{product.productCount
+																	* product.sellingPrice}}</bdi></span>
 														</td>
 													</tr>
 												</tbody>
@@ -543,8 +562,10 @@
 												<div class="wc-proceed-to-checkout">
 													<button @click="checkoutButton()"
 														class="checkout-button button alt wc-forward"
-														style="width: 100%;" :disabled="checkoutAmount <= 0">
+														style="width: 100%;"
+														:disabled="checkoutAmount <= 0 || checkoutButtonDisabled">
 														Proceed to checkout</button>
+													<p style="color: red;">{{apiError}}</p>
 												</div>
 											</div>
 										</div>
@@ -634,23 +655,33 @@
 																				data-element_type="widget"
 																				data-widget_type="social-icons.default">
 																				<div class="elementor-widget-container">
-																					<div class="elementor-social-icons-wrapper">
+																					<div
+																						class="elementor-social-icons-wrapper">
 																						<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook elementor-repeater-item-a2e5159"
-																						  href="https://www.facebook.com/myfoodmaniaofficial/" target="_blank">
-																						  <span class="elementor-screen-only">Facebook</span>
-																						  <i class="fab fa-facebook"></i>
+																							href="https://www.facebook.com/myfoodmaniaofficial/"
+																							target="_blank">
+																							<span
+																								class="elementor-screen-only">Facebook</span>
+																							<i
+																								class="fab fa-facebook"></i>
 																						</a>
 																						<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-dd02e67"
-																						  href="https://www.youtube.com/channel/UCepw-6nQ-m1ldEAHNtQ7vhQ" target="_blank">
-																						  <span class="elementor-screen-only">Youtube</span>
-																						  <i class="fab fa-youtube"></i>
+																							href="https://www.youtube.com/channel/UCepw-6nQ-m1ldEAHNtQ7vhQ"
+																							target="_blank">
+																							<span
+																								class="elementor-screen-only">Youtube</span>
+																							<i
+																								class="fab fa-youtube"></i>
 																						</a>
 																						<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-c3c1f10"
-																						  href="https://www.instagram.com/myfoodmaniaofficial/" target="_blank">
-																						  <span class="elementor-screen-only">Instagram</span>
-																						  <i class="fab fa-instagram"></i>
+																							href="https://www.instagram.com/myfoodmaniaofficial/"
+																							target="_blank">
+																							<span
+																								class="elementor-screen-only">Instagram</span>
+																							<i
+																								class="fab fa-instagram"></i>
 																						</a>
-																					  </div>
+																					</div>
 																				</div>
 																			</div>
 																		</div>
@@ -668,12 +699,12 @@
 																				<div class="elementor-widget-container">
 																					<div class="elementor-image">
 																						<img width="348" height="26"
-                                                                                            src="./assets/images/13.png"
-                                                                                            data-src="./assets/images/13.png"
-                                                                                            class="lazyload attachment-full size-full"
-                                                                                            alt=""
-                                                                                            data-srcset="./assets/images/13.png 348w, ./assets/images/13.png 300w"
-                                                                                            data-sizes="(max-width: 348px) 100vw, 348px" />
+																							src="./assets/images/13.png"
+																							data-src="./assets/images/13.png"
+																							class="lazyload attachment-full size-full"
+																							alt=""
+																							data-srcset="./assets/images/13.png 348w, ./assets/images/13.png 300w"
+																							data-sizes="(max-width: 348px) 100vw, 348px" />
 																					</div>
 																				</div>
 																			</div>
@@ -772,19 +803,28 @@
 																							class="elementor-icon-list-item">
 																							<a href="./contact-us.html">
 																								<span
-																									class="elementor-icon-list-text">Contact us</span>
+																									class="elementor-icon-list-text">Contact
+																									us</span>
 																							</a>
 																						</li>
-                                                                                        <li class="elementor-icon-list-item">
-                                                                                          <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">
-                                                                                            <span class="elementor-icon-list-text">Refund policy</span>
-                                                                                          </a>
-                                                                                        </li>
-                                                                                        <li class="elementor-icon-list-item">
-                                                                                          <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">
-                                                                                            <span class="elementor-icon-list-text">Privacy policy</span>
-                                                                                          </a>
-                                                                                        </li>
+																						<li
+																							class="elementor-icon-list-item">
+																							<a
+																								href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">
+																								<span
+																									class="elementor-icon-list-text">Refund
+																									policy</span>
+																							</a>
+																						</li>
+																						<li
+																							class="elementor-icon-list-item">
+																							<a
+																								href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">
+																								<span
+																									class="elementor-icon-list-text">Privacy
+																									policy</span>
+																							</a>
+																						</li>
 																					</ul>
 																				</div>
 																			</div>
@@ -848,12 +888,16 @@
 						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
 							<a href="./contact-us.html">Contact us</a>
 						</li>
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-                          <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">Refund policy</a>
-                        </li>
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
-                          <a href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">Privacy policy</a>
-                        </li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+							<a
+								href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">Refund
+								policy</a>
+						</li>
+						<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89">
+							<a
+								href="https://foodmania-assets.s3.ap-south-1.amazonaws.com/Terms+and+conditions+FoodMania.pdf">Privacy
+								policy</a>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -866,11 +910,14 @@
 			el: '#app',
 
 			data: {
+				maxQuantity: 5,
 				cartProduct: null,
 				subTotal: 0,
 				checkoutAmount: 0,
 				shippingChargePerQty: 0,
-				platformChargePercent: 0
+				platformChargePercent: 0,
+				apiError: '',
+				checkoutButtonDisabled: false
 			},
 
 			async created() {
@@ -922,6 +969,12 @@
 				},
 
 				counterChange() {
+					this.checkoutButtonDisabled = false;
+					this.apiError = '';
+					if (this.cartProduct[0].productCount > this.maxQuantity) {
+						this.apiError = `Sorry, Maximum order quantity is ${this.maxQuantity}. But you have ${this.cartProduct[0].productCount} in cart. Please edit your cart and try again. We apologise for any inconvenience caused.`
+						this.checkoutButtonDisabled = true;
+					}
 					const subtotal = this.cartProduct ? this.cartProduct.reduce(function (cnt, o) { return parseInt(cnt) + (o.sellingPrice * o.productCount); }, 0) : 0;
 					this.subTotal = subtotal;
 					this.checkoutAmount = subtotal;// + this.shippingChargePerQty + this.platformChargePercent;
